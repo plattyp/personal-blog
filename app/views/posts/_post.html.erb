@@ -1,0 +1,26 @@
+<div class="row-fluid post">
+    <div class="span12"> 
+        <div class="card">
+            <div class="card-heading image">
+                <a href="profile.html" > <img class="pull-right" src="assets/img/shaan.png" alt="author avatar"/></a>
+                <div class="card-heading-header">
+                    <a href="post.html"><h1><%= post.title %></h1></a>
+                    <h3>  <span> Published <%= post.created_at %></span>  <span>  By <a href="profile.html"> <%= post.user_id %> </a>  in  <i class="icon-bookmark muted"> </i>  <a href="topic.html"> <%= post.category %> </a></span> </h3>
+                </div>
+            </div>
+            <hr>
+            <div class="card-body">
+                <p><%= post.content %>
+                </p>
+            </div>
+
+            <div class="card-actions card-comments">
+                <button class="btn">+1</button>
+                <button class="btn">Share</button>
+                <a href="#"> <i class="icon-facebook  muted pull-right"></i> </a>
+                <a href="#"> <i class="icon-twitter  muted pull-right"></i> </a>
+                <a href="#"> <i class="icon-google-plus  muted pull-right"></i> </a>
+            </div>
+        </div>
+    </div>
+</div>
