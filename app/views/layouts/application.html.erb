@@ -10,8 +10,11 @@
 		<div class="container-fluid">
 		    <div class="row-fluid">
 		    	<%= render "sidebar" %>
-				<%= yield %>
+		    	<div class="span9">
+					<%= yield %>
+				</div>
 			</div>
 		</div>
+		<%= render "footer" %>
 	</body>
 </html>

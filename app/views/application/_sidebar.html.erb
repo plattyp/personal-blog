@@ -1,18 +1,16 @@
 <!-- LEFT FIXED SIDE BAR -->
 <div class="span3">
     <div class="sidebar-nav-fixed affix">
-
         <div class="card hovercard">
-
-            <img src="assets/img/b-cover.jpg" alt="image avatar" />
+            <%= image_tag "b-cover.jpg", alt: "Cover Photo" %>
             <div class="avatar">
-                <img src="assets/img/logo.png" alt="image avatar"/>
+                <%= image_tag "logo.png", alt: "Profile Picture" %>
             </div>
             <div class="info">
                 <div class="title">
-                    <h2>Andrew Platkin</h2>
+                    <h2><%= @metadata.title %></h2>
                 </div>
-                <div class="desc">This is a sample description that I would put</div>
+                <div class="desc"><%= @metadata.description %></div>
             </div>
         </div>
     </div>
