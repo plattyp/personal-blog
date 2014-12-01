@@ -35,8 +35,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:name,:content,:user_id,:project_id,:title,:category)
   end
-
-  def get_metadata
-    @metadata = Metadata.baseinfo.first
-  end
 end

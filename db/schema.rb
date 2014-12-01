@@ -11,16 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201040904) do
+ActiveRecord::Schema.define(version: 20141201123534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "images", force: true do |t|
     t.string   "image_url"
-    t.string   "image_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "imageable_id"
+    t.string   "imeageable_type"
+    t.boolean  "mainpicindicator", default: false
   end
 
   create_table "metadata", force: true do |t|
@@ -29,6 +31,7 @@ ActiveRecord::Schema.define(version: 20141201040904) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "profilepic_url"
   end
 
   create_table "posts", force: true do |t|

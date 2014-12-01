@@ -1,16 +1,16 @@
 <h1>Create a Post</h1>
-<%= form_for(@post) do |f| %>
-<%= f.label "Name" %>
-<%= f.text_field :name %>
-<%= f.label "Content" %>
-<%= f.text_area :content %>
-<%= f.label "Posting User" %>
-<%= f.text_field :user_id %>
-<%= f.label "Associated Project" %>
-<%= f.text_field :project_id %>
-<%= f.label "Post Title" %>
-<%= f.text_field :title %>
-<%= f.label "Category" %>
-<%= f.text_field :category %>
-<%= f.submit :submit %>
+	<%= form_for(@post) do |f| %>
+	<%= f.label "Name" %>
+	<%= f.text_field :name %>
+	<%= f.label "Content" %>
+	<%= f.text_area :content %>
+	<%= f.label "Posting User" %>
+	<%= f.text_field :user_id %>
+	<%= f.label "Associated Project" %>
+	<%= f.text_field :project_id %>
+	<%= f.label "Post Title" %>
+	<%= f.text_field :title %>
+	<%= f.label "Category" %>
+	<%= f.text_field :category %>
+	<%= f.submit :submit %>
 <% end %>
