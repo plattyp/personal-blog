@@ -1,5 +1,14 @@
 <div id="footer">
-	<div class="container ">
-		<p class="muted credit pull-right "> Simple footer looks good <a href="index.html">Home</a> | <a href="gallery.html">Photo Gallery</a> | <a href="topic.html">Topics/Categories</a> | <a href="blank.html"> Sample Page</a>.</p>
+	<div class="container">
+		<p class="muted credit">
+			<%= link_to "Home", root_path %> | 
+			<%= link_to "Projects", projects_path %> | 
+			<% if user_signed_in? %>
+				<%= link_to "Sign Out", destroy_user_session_path, method: :delete %> |
+				<%= link_to "Edit Account", edit_user_registration_path %>
+			<% else %>
+				<%= link_to "Log In", new_user_session_path %>
+			<% end %>
+		</p>
 	</div>
 </div>

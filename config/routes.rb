@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :posts
-  resources :users
+  devise_for :users
+
+  authenticate :user do
+    resources :posts, only: [:new, :create, :edit, :update, :destroy]
+    resources :projects, only: [:new, :create, :edit, :update, :destroy]
+  end
+
+  resources :posts, only: [:index,:show]
+  resources :users, only: [:show]
+  resources :projects, only: [:index,:show]
 
   root 'posts#index'
 
