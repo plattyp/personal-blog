@@ -1,0 +1,22 @@
+<%= render partial: 'shared/admintabs', :locals => {:activetab => 'Manage Posts'} %>
+	<div class="admincontainer">
+		<table class="table">
+			<tr>
+				<td>Title</td>
+				<td>Category</td>
+				<td>Related Project</td>
+				<td>Posted On</td>
+				<td>Actions</td>
+			</tr>
+			<% @posts.each do |p| %>
+				<tr>
+					<td><%= p.title %></td>
+					<td><%= p.category %></td>
+					<td><%= p.project_id %></td>
+					<td><%= p.created_at.to_s(:long) %></td>
+					<td><%= link_to "Edit", edit_post_path(p.id) %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+<%= render partial: 'shared/adminfooter' %>
