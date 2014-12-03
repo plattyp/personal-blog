@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :projects, only: [:index,:show]
 
+  get 'sitemgmt' => 'metadatas#sitemgmt'
+
   root 'posts#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -2,7 +2,7 @@
     <div class="span12"> 
         <div class="card">
             <div class="card-heading image">
-                <%= link_to "#{image_tag(post.profile_pic)}".html_safe, post_path(post), :class => "pull-right" %>
+                <%= link_to "#{image_tag(post.profile_pic.image_url)}".html_safe, post_path(post), :class => "pull-right" %>
                 <div class="card-heading-header">
                     <h1><%= link_to post.title, post_path(post) %></h1>
                     <h3>  <span> Published <%= post.created_at %></span>  <span>  By <%= link_to post.user.name, user_path(post.user.id) %>  in  <i class="icon-bookmark muted"> </i>   <%= link_to post.category, posts_path(:category => post.category) %> </span> </h3>
