@@ -1,17 +1,5 @@
-<%= render partial: 'shared/admintabs' %>
+<%= render partial: 'shared/admintabs', :locals => {:activetab => 'Create Post'} %>
 	<div class="admincontainer">
-		<%= form_for(@post) do |f| %>
-			<%= f.label "Name" %>
-			<%= f.text_field :name %>
-			<%= f.label "Content" %>
-			<%= f.text_area :content %>
-			<%= f.label "Associated Project" %>
-			<%= f.text_field :project_id %>
-			<%= f.label "Post Title" %>
-			<%= f.text_field :title %>
-			<%= f.label "Category" %>
-			<%= f.text_field :category %><br />
-			<%= f.submit :submit, :class => 'btn' %>
-		<% end %>
+		<%= render partial: 'managepost' %>
 	</div>
 <%= render partial: 'shared/adminfooter' %>

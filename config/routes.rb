@@ -5,13 +5,13 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :posts, only: [:new, :create, :edit, :update, :destroy]
     resources :projects, only: [:new, :create, :edit, :update, :destroy]
+    resources :metadata
+    get 'manageposts' => 'posts#manage'
   end
 
   resources :posts, only: [:index,:show]
   resources :users, only: [:show]
   resources :projects, only: [:index,:show]
-
-  get 'sitemgmt' => 'metadatas#sitemgmt'
 
   root 'posts#index'
 

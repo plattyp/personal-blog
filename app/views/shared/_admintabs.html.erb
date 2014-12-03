@@ -1,8 +1,8 @@
-<div class="card"> 
+<div class="card">
     <ul class="nav nav-tabs" id="myTab">
-        <li><%= link_to "Manage Site", sitemgmt_path %></li>
-        <li><%= link_to "Manage Posts", root_path %></li>
-        <li><%= link_to "Manage Projects", root_path %></li>
-        <li class="active"><%= link_to "Create Post", new_post_path %></li>
+        <%= content_tag :li, link_to("Manage Site", metadata_path), :class => activetab == 'Manage Site' ? 'active' : 'inactive' %>
+        <%= content_tag :li, link_to("Manage Posts", manageposts_path), :class => activetab == 'Manage Posts' ? 'active' : 'inactive' %>
+        <%= content_tag :li, link_to("Manage Projects", root_path), :class => activetab == 'Manage Projects' ? 'active' : 'inactive' %>
+        <%= content_tag :li, link_to("Create Post", new_post_path), :class => activetab == 'Create Post' ? 'active' : 'inactive' %>
     </ul>
     <div class="tab-content">

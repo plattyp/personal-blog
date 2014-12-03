@@ -5,7 +5,7 @@
                 <%= link_to "#{image_tag(post.profile_pic.image_url)}".html_safe, post_path(post), :class => "pull-right" %>
                 <div class="card-heading-header">
                     <h1><%= link_to post.title, post_path(post) %></h1>
-                    <h3>  <span> Published <%= post.created_at %></span>  <span>  By <%= link_to post.user.name, user_path(post.user.id) %>  in  <i class="icon-bookmark muted"> </i>   <%= link_to post.category, posts_path(:category => post.category) %> </span> </h3>
+                    <h3>  <span> Published <%= post.created_at.to_s(:long) %></span>  <span>  By <%= link_to post.user.name, user_path(post.user.id) %>  in  <i class="icon-bookmark muted"> </i>   <%= link_to post.category.name, posts_path(:category_id => post.category_id) %> </span> </h3>
                 </div>
             </div>
             <hr>
@@ -17,9 +17,7 @@
             <div class="card-actions card-comments">
                 <button class="btn">+1</button>
                 <button class="btn">Share</button>
-                <a href="#"> <i class="icon-facebook  muted pull-right"></i> </a>
-                <a href="#"> <i class="icon-twitter  muted pull-right"></i> </a>
-                <a href="#"> <i class="icon-google-plus  muted pull-right"></i> </a>
+                <button class="btn pull-right">Go to Project</button>
             </div>
         </div>
     </div>
