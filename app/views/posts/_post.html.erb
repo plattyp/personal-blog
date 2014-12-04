@@ -2,7 +2,9 @@
     <div class="span12"> 
         <div class="card">
             <div class="card-heading image">
-                <%= link_to "#{image_tag(post.profile_pic.image_url)}".html_safe, post_path(post), :class => "pull-right" %>
+                <% if post.has_profilepic? %>
+                    <%= link_to "#{image_tag(post.profile_pic.image_url)}".html_safe, post_path(post), :class => "pull-right" %>
+                <% end %>
                 <div class="card-heading-header">
                     <h1><%= link_to post.title, post_path(post) %></h1>
                     <h3>  <span> Published <%= post.created_at.to_s(:long) %></span>  <span>  By <%= link_to post.user.name, user_path(post.user.id) %>  in  <i class="icon-bookmark muted"> </i>   <%= link_to post.category.name, posts_path(:category_id => post.category_id) %> </span> </h3>
@@ -17,7 +19,9 @@
             <div class="card-actions card-comments">
                 <button class="btn">+1</button>
                 <button class="btn">Share</button>
-                <button class="btn pull-right">Go to Project</button>
+                <% if post.has_project? %>
+                <%= content_tag :button, link_to("Go to Project", project_path(:id => post.project_id)), :class => 'btn pull-right' %>
+                <% end %>
             </div>
         </div>
     </div>

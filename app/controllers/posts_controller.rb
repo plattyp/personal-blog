@@ -17,9 +17,9 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to post_path(@post.id), flash[:notice] => "The post has been saved!"
+      redirect_to post_path(@post.id), :notice => "The post has been saved!"
     else
-      redirect_to new_post_path, flash[:notice] => "The post could not be saved, sorry"
+      redirect_to new_post_path, :notice => "The post could not be saved, sorry"
     end
   end
 
@@ -29,15 +29,20 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post = @post.update_attributes(post_params)
-    if @post.save
-      redirect_to edit_post_path(@post.id), flash[:notice] => "The post has been updated!"
+    if @post.update(post_params)
+      redirect_to edit_post_path(@post.id), :notice => "The post has been updated!"
     else
-      redirect_to edit_post_path(@post.id), flash[:notice] => "The post could not be updated!"
+      redirect_to edit_post_path(@post.id), :notice => "The post could not be updated!"
     end
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      redirect_to manageposts_path, :notice => "The post has been deleted successfully"
+    else
+      redirect_to manageposts_path, :notice => "The post was unable to be deleted"
+    end
   end
 
   def manage

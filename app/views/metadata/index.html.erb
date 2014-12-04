@@ -1,4 +1,4 @@
-<%= render partial: 'shared/admintabs', :locals => {:activetab => 'Manage Site'} %>
+<%= render partial: 'shared/admintabs', :locals => {:activetab => 'Manage Site', :overridetab => nil} %>
 	<div class="admincontainer">
 		<%= form_for(@metadata) do |f| %>
 			<%= f.label "Title" %>

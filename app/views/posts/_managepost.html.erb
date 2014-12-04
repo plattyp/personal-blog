@@ -4,10 +4,10 @@
 	<%= f.label "Content" %>
 	<%= f.text_area :content %>
 	<%= f.label "Associated Project" %>
-	<%= f.select :project, @projects %>
+	<%= f.select :project_id, @projects %>
 	<%= f.label "Post Title" %>
 	<%= f.text_field :title %>
 	<%= f.label "Category" %>
-	<%= f.select :category, @categories %><br />
+	<%= f.select :category_id, @categories %><br />
 	<%= f.submit :submit, :class => 'btn' %>
 <% end %>

@@ -9,6 +9,14 @@ class Post < ActiveRecord::Base
 	validates :category_id, :name, :title, presence: true
 
 	def profile_pic
-		Post.joins('LEFT OUTER JOIN images ON images.imageable_id = posts.id').where('images.imageable_type = ?',"post").select('image_url').first
+		profilepic = Post.joins('LEFT OUTER JOIN images ON posts.id = images.imageable_id').where('images.imageable_type = ? AND posts.id = ?',"post",self.id).select('image_url').first
+	end
+
+	def has_profilepic?
+		profile_pic != nil
+	end
+
+	def has_project?
+		self.project_id != nil
 	end
 end
