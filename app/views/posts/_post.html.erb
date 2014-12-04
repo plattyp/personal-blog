@@ -6,13 +6,17 @@
                     <%= link_to "#{image_tag(post.profile_pic.image_url)}".html_safe, post_path(post), :class => "pull-right" %>
                 <% end %>
                 <div class="card-heading-header">
-                    <h1><%= link_to post.title, post_path(post) %></h1>
-                    <h3>  <span> Published <%= post.created_at.to_s(:long) %></span>  <span>  By <%= link_to post.user.name, user_path(post.user.id) %>  in  <i class="icon-bookmark muted"> </i>   <%= link_to post.category.name, posts_path(:category_id => post.category_id) %> </span> </h3>
+                    <h1><%= link_to post.name, post_path(post) %>
+                    <% if user_signed_in? %>
+                        <%= link_to '[edit]', edit_post_path(post.id) %>
+                    <% end %>
+                    </h1>
+                    <h3><span> Published <%= post.created_at.to_s(:long) %></span>  <span>  By <%= link_to post.user.name, user_path(post.user.id) %>  in  <i class="icon-bookmark muted"> </i>   <%= link_to post.category.name, posts_path(:category_id => post.category_id) %> </span> </h3>
                 </div>
             </div>
             <hr>
             <div class="card-body">
-                <p><%= post.content %>
+                <p><%= post.content.html_safe %>
                 </p>
             </div>
 

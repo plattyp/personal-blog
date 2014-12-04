@@ -39,6 +39,10 @@ gem 'pg'
 
 # Use Devise for Authentication
 gem 'devise'
+
+# The editor for the HTML WYSIWYG content
+gem 'ckeditor'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

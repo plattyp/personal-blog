@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:name,:content,:user_id,:project_id,:title,:category_id)
+    params.require(:post).permit(:name,:content,:user_id,:project_id,:category_id)
   end
 
   def get_selectors
