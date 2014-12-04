@@ -1,4 +1,4 @@
-<%= render partial: 'shared/admintabs', :locals => {:activetab => 'Manage Projects', :overridetab => nil} %>
+<%= render partial: 'shared/navtabs', :locals => {:tabcontent => 'Admin', :activetab => 'Manage Projects', :overridetab => nil} %>
 	<div class="admincontainer">
 		<table class="table">
 			<tr>
@@ -17,4 +17,4 @@
 		</table><br />
 		<%= button_to "New Project", new_project_path, :class => 'btn', :method => "get" %>
 	</div>
-<%= render partial: 'shared/adminfooter' %>
+<%= render partial: 'shared/tabfooter' %>

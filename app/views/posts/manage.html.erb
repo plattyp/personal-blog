@@ -1,4 +1,4 @@
-<%= render partial: 'shared/admintabs', :locals => {:activetab => 'Manage Posts', :overridetab => nil} %>
+<%= render partial: 'shared/navtabs', :locals => {:tabcontent => 'Admin', :activetab => 'Manage Posts', :overridetab => nil} %>
 	<div class="admincontainer">
 		<table class="table">
 			<tr>
@@ -21,4 +21,4 @@
 		</table><br />
 		<%= button_to "New Post", new_post_path, :class => 'btn', :method => "get" %>
 	</div>
-<%= render partial: 'shared/adminfooter' %>
+<%= render partial: 'shared/tabfooter' %>

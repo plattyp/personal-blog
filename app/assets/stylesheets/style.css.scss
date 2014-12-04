@@ -254,7 +254,9 @@ p {
     background: #fff;
 }
 
-
+.btn a {
+    text-color: #000;
+}
 
 /****************siderbar****************/
 .sidebar-nav-fixed {
@@ -309,6 +311,7 @@ p {
 .post .card.people .card-top{
     background-color: #FADC03;
 }
+
 /******footer*****/
 #push,
 #footer {
@@ -324,7 +327,15 @@ p {
 
 /******Admin Page*****/
 .admincontainer {
-    padding: 0px 0px 0px 20px;
+    padding: 0px 20px 0px 20px;
+}
+
+.cke_contents { 
+    height: 100% !important; 
+}
+
+.contentcontainer {
+    height: 500px;
 }
 
 /******Login Page*****/

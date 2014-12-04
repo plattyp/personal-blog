@@ -11,7 +11,7 @@
                         <%= link_to '[edit]', edit_post_path(post.id) %>
                     <% end %>
                     </h1>
-                    <h3><span> Published <%= post.created_at.to_s(:long) %></span>  <span>  By <%= link_to post.user.name, user_path(post.user.id) %>  in  <i class="icon-bookmark muted"> </i>   <%= link_to post.category.name, posts_path(:category_id => post.category_id) %> </span> </h3>
+                    <h3><span> Published <%= post.created_at.to_s(:long) %></span>  <span>  By <%= link_to post.user.name, user_path(post.user.id) %>  in <%= link_to post.category.name, posts_path(:category_id => post.category_id) %> </span> </h3>
                 </div>
             </div>
             <hr>
@@ -24,7 +24,7 @@
                 <button class="btn">+1</button>
                 <button class="btn">Share</button>
                 <% if post.has_project? %>
-                <%= content_tag :button, link_to("Go to Project", project_path(:id => post.project_id)), :class => 'btn pull-right' %>
+                <%= link_to "Go to Project", project_path(:id => post.project_id), :class => 'btn pull-right', :role => 'button' %>
                 <% end %>
             </div>
         </div>

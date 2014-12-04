@@ -1,3 +1,9 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// This is used to increase the standard size of the textarea input
+.largertextarea {
+	width: 500px;
+	height: 150px;
+}

@@ -1,6 +1,14 @@
 <%= form_for(@project) do |f| %>
 	<%= f.label "Name" %>
 	<%= f.text_field :name %>
+	<%= f.label "Tagline" %>
+	<%= f.text_field :snippet %>
+	<%= f.label "Project Description" %>
+	<%= f.text_area :description, :class => 'largertextarea' %>
+	<%= f.label "Website URL" %>
+	<%= f.url_field :url %>
+	<%= f.label "Appstore URL" %>
+	<%= f.url_field :appstore_url %>
 	<%= f.label "Github URL" %>
 	<%= f.url_field :github_url %><br />
 	<%= f.submit :submit, :class => 'btn' %>

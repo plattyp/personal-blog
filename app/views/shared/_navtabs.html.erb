@@ -1,0 +1,24 @@
+<div class="card">
+    <ul class="nav nav-tabs" id="myTab">
+        <% case tabcontent %>
+        <% when 'Admin' %>
+            <%= content_tag :li, link_to("Manage Site", metadata_path), :class => activetab == 'Manage Site' ? 'active' : 'inactive' %>
+            <%= content_tag :li, link_to("Manage Posts", manageposts_path), :class => activetab == 'Manage Posts' ? 'active' : 'inactive' %>
+            <%= content_tag :li, link_to("Manage Projects", manageprojects_path), :class => activetab == 'Manage Projects' ? 'active' : 'inactive' %>
+            <% case overridetab %>
+            <% when "Create Post" %>
+            	<%= content_tag :li, link_to("Create Post", new_post_path), :class => 'active' %>
+            <% when "Create Project" %>
+                <%= content_tag :li, link_to("Create Project", new_project_path), :class =>'active' %>
+            <% when "Update Post" %>
+            	<%= content_tag :li, link_to("Update Post", edit_post_path(@post.id)), :class => 'active' %>
+            <% when "Update Project" %>
+            	<%= content_tag :li, link_to("Update Post", edit_project_path(@project.id)), :class => 'active' %>
+            <% end %>
+        <% when 'Project' %>
+        <%= content_tag :li, link_to("Project Info", project_path(project_id)), :class => activetab == 'Project Info' ? 'active' : 'inactive' %>
+        <%= content_tag :li, link_to("Images", project_path(project_id)), :class => activetab == 'Images' ? 'active' : 'inactive' %>
+        <%= content_tag :li, link_to("Stats", project_path(project_id)), :class => activetab == 'Stats' ? 'active' : 'inactive' %>
+        <% end %>
+    </ul>
+    <div class="tab-content">

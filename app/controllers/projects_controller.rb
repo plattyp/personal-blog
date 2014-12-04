@@ -4,6 +4,11 @@ class ProjectsController < ApplicationController
 		@projects = Project.recent_projects
 	end
 
+	def show
+		@project = Project.find(params[:id])
+		@posts   = @project.posts
+	end
+
 	def new
 		@project = Project.new
 	end
@@ -40,6 +45,6 @@ class ProjectsController < ApplicationController
 	private
 
 	def project_params
-		params.require(:project).permit(:name,:github_url)
+		params.require(:project).permit(:name,:github_url,:url,:description,:appstore_url,:snippet)
 	end
 end

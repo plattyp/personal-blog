@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :projects, only: [:index,:show]
 
+  resources :projects do
+    resources :posts, only: [:index]
+  end
+
   root 'posts#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
