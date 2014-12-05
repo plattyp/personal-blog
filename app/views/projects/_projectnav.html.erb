@@ -1,6 +1,0 @@
-<div class="card">
-    <ul class="nav nav-tabs" id="myTab">
-        <%= content_tag :li, link_to("Project Info", project_path(project)), :class => activetab == 'Project Info' ? 'active' : 'inactive' %>
-        <%= content_tag :li, link_to("Related Posts", project_posts_path(project)), :class => activetab == 'Related Posts' ? 'active' : 'inactive' %>
-    </ul>
-    <div class="tab-content">

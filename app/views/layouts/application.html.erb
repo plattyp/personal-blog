@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -9,7 +10,9 @@
 	<body>
 		<div class="container-fluid">
 		    <div class="row-fluid">
-		    	<%= render "sidebar" %>
+		    	<div class="span3">
+		    		<%= render "sidebar" %>
+		    	</div>
 		    	<div class="span9">
 		    		<% if notice %>
 				  		<p class="alert alert-success"><%= notice %></p>
