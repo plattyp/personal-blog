@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
 	def index
-		@projects = Project.recent_projects
+		@projects = Project.portfolioprojects
 	end
 
 	def show
