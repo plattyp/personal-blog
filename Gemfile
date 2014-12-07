@@ -40,8 +40,10 @@ gem 'pg'
 # Use Devise for Authentication
 gem 'devise'
 
-# The editor for the HTML WYSIWYG content
+# The editor for the HTML WYSIWYG content, attachments, storage on S3
 gem 'ckeditor'
+gem "paperclip", "~> 4.2"
+gem 'aws-sdk', '~> 1.5.7'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
