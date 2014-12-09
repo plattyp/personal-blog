@@ -34,6 +34,19 @@ Rails.application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
+  # For attachments with PaperClip
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :url => Rails.application.secrets.s3_url,
+    :path => "/:class/:id/:style/:clean_filename",
+    :s3_host_alias => Rails.application.secrets.s3_host_alias,
+    :s3_credentials => {
+      :bucket => Rails.application.secrets.s3_bucket,
+      :access_key_id => Rails.application.secrets.s3_access_key_id,
+      :secret_access_key => Rails.application.secrets.s3_secret_access_key
+    }
+  }
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

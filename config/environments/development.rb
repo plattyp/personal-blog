@@ -35,6 +35,17 @@ Rails.application.configure do
   # For the configuration of devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+  # For attachments with PaperClip
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :path => "/:class/:id/:style/:clean_filename",
+    :s3_credentials => {
+      :bucket => Rails.application.secrets.S3_BUCKET,
+      :access_key_id => Rails.application.secrets.S3_ACCESS_KEY,
+      :secret_access_key => Rails.application.secrets.S3_SECRET_ACCESS_KEY
+    }
+  }
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

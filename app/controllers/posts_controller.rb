@@ -11,6 +11,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @post.images.build
   end
 
   def create
@@ -25,6 +26,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @post.images.build
   end
 
   def update
@@ -52,7 +54,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:name,:content,:user_id,:project_id,:category_id)
+    params.require(:post).permit(:name,:content,:user_id,:project_id,:category_id,images_attributes: [:id,:image])
   end
 
   def get_selectors
