@@ -15,16 +15,35 @@
 	</div>
 	<div class="row-fluid">
 		<div class="span12">
-			<%= f.fields_for :images do |i| %>
-				<%= i.label "Image" %>
-				<%= i.file_field :image %>
-			<% end %>
 		</div>
 	</div>
 	<div class="row-fluid">
 		<div class="span12">
 			<%= f.label "Content" %>
 			<%= f.cktext_area :content %>
+		</div>
+	</div><br />
+	<div class="row-fluid">
+		<div class="span12">
+			<ul class="nav nav-tabs" id="myTab">
+				<%= content_tag :li, link_to("Images","#images"), :class => "active" %>
+				<%= content_tag :li, link_to("Upload","#upload") %>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="images">
+					<% @post.images.each do |image| %>
+						<% if image.id != nil %>
+							<%= image_tag(image.image.url(:thumb)) %>
+						<% end %>
+					<% end %>
+				</div>
+				<div class="tab-pane" id="upload">
+					<%= f.fields_for :images, @post.images.build do |i| %>
+							<%= i.label "Image" %>
+							<%= i.file_field :image %>
+					<% end %>
+				</div>
+			</div>
 		</div>
 	</div><br />
 	<%= f.submit :submit, :class => 'btn' %>

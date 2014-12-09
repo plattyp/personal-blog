@@ -26,6 +26,29 @@ class Image < ActiveRecord::Base
   		where(mainpicindicator: true).first.image.url(:thumb)
   	end
 
+  	def self.imageportfolio
+		array = Array.new
+		resultarray = Array.new
+		counter = 0
+		images = Image.all
+
+		images.each do |i|
+			counter += 1
+			puts "counter #{counter}"
+			array << i
+			puts "#{array}"
+			if counter == 3
+				resultarray << array
+				array = Array.new
+				counter = 0
+			end
+		end
+
+		resultarray << array
+		
+		return resultarray
+  	end
+
 	private
 
 	#Set mainpicindicator flag to true for first uploaded pictures for a given project or post

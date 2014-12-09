@@ -19,6 +19,10 @@ class Post < ActiveRecord::Base
 		profile_pic != nil
 	end
 
+	def has_images?
+		Post.joins(:images).where('posts.id = ?', self.id).count > 0
+	end
+
 	def has_project?
 		self.project_id != nil
 	end
