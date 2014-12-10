@@ -4,9 +4,14 @@
 	</div>
 	<div class="span9">
 		<%= render partial: 'shared/navtabs', :locals => {:tabcontent => 'Project', :project_id => @project.id, :activetab => 'Project Info'} %>
-			<div class="admincontainer">
-				<p><%= @project.description %></p>	
-			</div>
+				<div class="tab-pane active" id="projectinfo">
+					<div class="admincontainer">
+						<p><%= @project.description %></p>
+					</div>
+				</div>
+				<div class="tab-pane" id="projectimages">
+					<%= render_gallery_for @project.images, item_class: 'span2' if @project.has_images? %>
+				</div>
 		<%= render partial: 'shared/tabfooter' %>
 	</div>
 </div>

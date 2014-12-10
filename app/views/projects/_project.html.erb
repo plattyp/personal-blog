@@ -1,14 +1,16 @@
 <div class="card">
     <div class="card-heading image">
-        <%= link_to "#{image_tag("http://images2.fanpop.com/image/photos/9700000/Sad-Puppy-puppies-9726248-1600-1200.jpg")}".html_safe, project_path(@project.id), :class => "pull-right" %>
+        <%= link_to "#{image_tag(@project.images.mainpicture)}".html_safe, project_path(@project.id), :class => "pull-right" %>
         <div class="card-heading-header">
             <h1><%= @project.name %></h1>
             <h3><span><%= @project.snippet %></span></h3>
         </div>
     </div>
-    <hr>
     <div class="card-body">
-        <p>Just some content
-        </p>
+    </div>
+    <div class="card-actions card-comments">
+        <%= link_to "Follow on Github", url_for(@project.github_url) , :class => 'btn pull-left', :role => 'button' if @project.has_github? %>
+        <%= link_to "Go to Appstore", url_for(@project.appstore_url) , :class => 'btn pull-right', :role => 'button' if @project.has_appstore? %>
+       <%= link_to "Go to Website", url_for(@project.url) , :class => 'btn pull-right', :role => 'button' if @project.has_website? %>
     </div>
 </div>

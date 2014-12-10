@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  mount Ckeditor::Engine => '/ckeditor'
+  #mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
 
   authenticate :user do
     resources :posts, only: [:new, :create, :edit, :update, :destroy]
     resources :projects, only: [:new, :create, :edit, :update, :destroy]
     resources :metadata
+    resources :images
     get 'manageposts' => 'posts#manage'
     get 'manageprojects' => 'projects#manage'
   end

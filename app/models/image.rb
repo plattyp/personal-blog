@@ -23,29 +23,17 @@ class Image < ActiveRecord::Base
 
   	#Used to retrieve the main picture for a given post or project
   	def self.mainpicture
-  		where(mainpicindicator: true).first.image.url(:thumb)
+  		where(mainpicindicator: true).first.image.url
   	end
 
-  	def self.imageportfolio
-		array = Array.new
+  	def self.allimages
 		resultarray = Array.new
-		counter = 0
 		images = Image.all
 
 		images.each do |i|
-			counter += 1
-			puts "counter #{counter}"
-			array << i
-			puts "#{array}"
-			if counter == 3
-				resultarray << array
-				array = Array.new
-				counter = 0
-			end
+			resultarray << i.image.url(:original)
 		end
 
-		resultarray << array
-		
 		return resultarray
   	end
 

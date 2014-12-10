@@ -1,6 +1,6 @@
 <div class="sidebar-nav-fixed affix">
     <div class="card hovercard">
-        <%= image_tag "b-cover.jpg", alt: "Cover Photo" %>
+        <%= image_tag "#{@metadata.bannerpic_url}".html_safe, alt: "Cover Photo" %>
         <div class="avatar">
             <%= link_to "#{image_tag(@metadata.profilepic_url)}".html_safe, root_path %>
         </div>

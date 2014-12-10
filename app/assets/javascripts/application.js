@@ -11,8 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require hermitage
 //= require jquery_ujs
 //= require turbolinks
 //= require ckeditor/init
+// require bootstrap
 //= require_tree .
-//= require bootstrap-sprockets

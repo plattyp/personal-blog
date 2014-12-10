@@ -1,7 +1,0 @@
-<% images.each do |i| %>
-	<ul class="thumbnails">
-		<% i.each do |row| %>
-			<%= render partial: 'shared/thumbnail', :locals => {:imageurl => row.image.url} %>
-		<% end %>
-	</ul>
-<% end %>

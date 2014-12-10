@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
 
 	def show
 		@project = Project.find(params[:id])
-		@posts   = @project.posts
+		@posts   = @project.posts.recent_posts
 	end
 
 	def new
@@ -45,6 +45,6 @@ class ProjectsController < ApplicationController
 	private
 
 	def project_params
-		params.require(:project).permit(:name,:github_url,:url,:description,:appstore_url,:snippet)
+		params.require(:project).permit(:name,:github_url,:url,:description,:appstore_url,:snippet,images_attributes: [:id,:image])
 	end
 end

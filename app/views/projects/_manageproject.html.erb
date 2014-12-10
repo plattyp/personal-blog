@@ -10,6 +10,7 @@
 	<%= f.label "Appstore URL" %>
 	<%= f.url_field :appstore_url %>
 	<%= f.label "Github URL" %>
-	<%= f.url_field :github_url %><br />
+	<%= f.url_field :github_url %>
+	<%= render partial: "shared/imagecontrols", :locals => {:object => @project, :f => f} %><br />
 	<%= f.submit :submit, :class => 'btn' %>
 <% end %>

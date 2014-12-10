@@ -18,7 +18,7 @@
             <div class="card-body">
                 <p><%= post.content.html_safe %>
                 </p>
-                <%= render partial: 'shared/thumbnails', :locals => {:images => post.images.imageportfolio} if post.has_images? %>
+                <%= render_gallery_for post.images, item_class: 'span2' if post.has_images? %>
             </div>
 
             <div class="card-actions card-comments">
