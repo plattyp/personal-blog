@@ -1,9 +1,5 @@
-<% @projects.each do |p| %>
-    <div class="row-fluid">
-        <ul class="thumbnails">
-            <% p.each do |name, id| %>
-            <%= render partial: 'projectcard', :locals => {:name => name, :id => id} %>
-            <% end %>
-        </ul>
-    </div>
-<% end %>
+<ul class="thumbnails">
+	<% @projects.each do |id,name,picture| %>
+	        <%= render partial: 'projectcard', :locals => {:name => name, :id => id, :picture => picture} %>
+	<% end %>
+</ul>

@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post.id), :notice => "The post has been saved!"
     else
-      redirect_to new_post_path, :notice => "The post could not be saved, sorry"
+      redirect_to new_post_path, :alert => "The post could not be saved, sorry"
     end
   end
 
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to edit_post_path(@post.id), :notice => "The post has been updated!"
     else
-      redirect_to edit_post_path(@post.id), :notice => "The post could not be updated!"
+      redirect_to edit_post_path(@post.id), :alert => "The post could not be updated!"
     end
   end
 
@@ -42,7 +42,7 @@ class PostsController < ApplicationController
     if @post.destroy
       redirect_to manageposts_path, :notice => "The post has been deleted successfully"
     else
-      redirect_to manageposts_path, :notice => "The post was unable to be deleted"
+      redirect_to manageposts_path, :alert => "The post was unable to be deleted"
     end
   end
 

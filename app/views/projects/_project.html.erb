@@ -1,8 +1,10 @@
 <div class="card">
     <div class="card-heading image">
-        <%= link_to "#{image_tag(@project.images.mainpicture)}".html_safe, project_path(@project.id), :class => "pull-right" %>
+        <%= link_to "#{image_tag(@project.images.mainpicture)}".html_safe, project_path(@project.id), :class => "pull-right" if @project.has_images? %>
         <div class="card-heading-header">
-            <h1><%= @project.name %></h1>
+            <h1><%= @project.name %>
+                <%= link_to '<i class="icon icon-pencil"></i>'.html_safe, edit_project_path(@project.id) if user_signed_in? %>
+            </h1>
             <h3><span><%= @project.snippet %></span></h3>
         </div>
     </div>

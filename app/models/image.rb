@@ -23,7 +23,15 @@ class Image < ActiveRecord::Base
 
   	#Used to retrieve the main picture for a given post or project
   	def self.mainpicture
-  		where(mainpicindicator: true).first.image.url
+  		picture = where(mainpicindicator: true).first
+
+  		if picture != nil
+  			picture.image.url
+  		else
+  			"http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2012/3/6/1331051759134/Blue-sky-with-clouds-007.jpg"
+  		end
+
+  		#where(mainpicindicator: true).first.image.url
   	end
 
   	def self.allimages

@@ -11,27 +11,15 @@ class Project < ActiveRecord::Base
 		Project.all.pluck("name","id")
 	end
 
-	def self.portfolioprojects
-		array = Array.new
+	def self.portfolio
 		resultarray = Array.new
-		counter = 0
-		projects = selectprojects
+		projects = Project.recent_projects
 
 		projects.each do |p|
-			counter += 1
-			puts "counter #{counter}"
-			array << p
-			puts "#{array}"
-			if counter == 3
-				resultarray << array
-				array = Array.new
-				counter = 0
-			end
+			picture = p.images.mainpicture
+			resultarray << [p.id,p.name,picture]
 		end
-
-		resultarray << array
-		
-		return resultarray
+		resultarray
 	end
 
 	def has_images?
