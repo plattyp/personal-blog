@@ -45,6 +45,10 @@ class Image < ActiveRecord::Base
 		return resultarray
   	end
 
+	def image_url
+	  image.url(:original)
+	end
+
 	private
 
 	#Set mainpicindicator flag to true for first uploaded pictures for a given project or post

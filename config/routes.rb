@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   authenticate :user do
+    resources :categories
     resources :posts, only: [:new, :create, :edit, :update, :destroy]
     resources :projects, only: [:new, :create, :edit, :update, :destroy]
     resources :metadata

@@ -3,6 +3,7 @@
         <% case tabcontent %>
         <% when 'Admin' %>
             <%= content_tag :li, link_to("Manage Site", metadata_path), :class => activetab == 'Manage Site' ? 'active' : 'inactive' %>
+            <%= content_tag :li, link_to("Manage Categories", categories_path), :class => activetab == 'Manage Categories' ? 'active' : 'inactive' %>
             <%= content_tag :li, link_to("Manage Posts", manageposts_path), :class => activetab == 'Manage Posts' ? 'active' : 'inactive' %>
             <%= content_tag :li, link_to("Manage Projects", manageprojects_path), :class => activetab == 'Manage Projects' ? 'active' : 'inactive' %>
             <% case overridetab %>
@@ -14,6 +15,8 @@
             	<%= content_tag :li, link_to("Update Post", edit_post_path(@post.id)), :class => 'active' %>
             <% when "Update Project" %>
             	<%= content_tag :li, link_to("Update Project", edit_project_path(@project.id)), :class => 'active' %>
+            <% when "Update Category" %>
+                <%= content_tag :li, link_to("Update Category", edit_category_path(@category.id)), :class => 'active' %>
             <% end %>
         <% when 'Project' %>
         <%= content_tag :li, link_to("Project Info", "#projectinfo", :data => {:toggle => "tab"}), :class => activetab == 'Project Info' ? 'active' : 'inactive' %>

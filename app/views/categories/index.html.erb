@@ -1,0 +1,20 @@
+<%= render partial: 'shared/navtabs', :locals => {:tabcontent => 'Admin', :activetab => 'Manage Categories', :overridetab => nil} %>
+	<div class="admincontainer">
+		<table class="table">
+			<tr>
+				<td>Name</td>
+				<td>Number of Posts</td>
+				<td>Actions</td>
+			</tr>
+			<% @categories.each do |c| %>
+				<tr>
+					<td><%= c.name %></td>
+					<td>25</td>
+					<td><%= link_to "Edit", edit_category_path(c.id) %> | 
+					<%= link_to "Delete", category_path(c.id), :method => :destroy %></td>
+				</tr>
+			<% end %>
+		</table><br />
+		<%= render partial: 'categoryform' %>
+	</div>
+<%= render partial: 'shared/tabfooter' %>

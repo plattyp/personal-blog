@@ -1,0 +1,5 @@
+<%= form_for(@category) do |f| %>
+	<%= f.label "#{request.env['PATH_INFO'] == categories_path ? "Add New Category" : "Name"}" %>
+	<%= f.text_field :name %><br />
+	<%= f.submit :submit, :class => 'btn' %>
+<% end %>

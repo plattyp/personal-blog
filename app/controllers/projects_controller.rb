@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
 
 	def index
-		@projects = Project.portfolio
+		#@projects = Project.portfolio
+		@projects = Project.grid
 	end
 
 	def show
