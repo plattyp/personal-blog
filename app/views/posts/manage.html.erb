@@ -6,14 +6,16 @@
 				<td>Category</td>
 				<td>Related Project</td>
 				<td>Posted On</td>
+				<td>Visible?</td>
 				<td>Actions</td>
 			</tr>
 			<% @posts.each do |p| %>
 				<tr>
-					<td><%= p.name %></td>
+					<td><%= link_to "#{p.name}", post_path(p.id) %></td>
 					<td><%= p.category.name %></td>
-					<td><%= p.has_project? ? p.project.name : nil %></td>
+					<td><%= p.has_project? ? link_to("#{p.project.name}", project_path(p.project.id)) : nil %></td>
 					<td><%= p.created_at.to_s(:long) %></td>
+					<td><%= p.visible ? "Yes" : "No" %></td>
 					<td><%= link_to "Edit", edit_post_path(p.id) %> | 
 					<%= link_to "Delete", post_path(p.id), :method => :destroy %></td>
 				</tr>

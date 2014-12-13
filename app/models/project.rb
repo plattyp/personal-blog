@@ -5,22 +5,22 @@ class Project < ActiveRecord::Base
 
 	accepts_nested_attributes_for :images
 	
-	scope :recent_projects, -> {order('projects.created_at DESC')}
+	scope :recent_projects, -> {where("visible = TRUE").order('projects.created_at DESC')}
 
 	def self.selectprojects
 		Project.all.pluck("name","id")
 	end
 
-	def self.portfolio
-		resultarray = Array.new
-		projects = Project.recent_projects
+	# def self.portfolio
+	# 	resultarray = Array.new
+	# 	projects = Project.recent_projects
 
-		projects.each do |p|
-			picture = p.images.mainpicture
-			resultarray << [p.id,p.name,picture]
-		end
-		resultarray
-	end
+	# 	projects.each do |p|
+	# 		picture = p.images.mainpicture
+	# 		resultarray << [p.id,p.name,picture]
+	# 	end
+	# 	resultarray
+	# end
 
 	def self.grid
 		array = Array.new

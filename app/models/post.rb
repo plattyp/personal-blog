@@ -7,7 +7,11 @@ class Post < ActiveRecord::Base
 
 	accepts_nested_attributes_for :images
 
-	scope :recent_posts, ->(category_id = nil) {category_id ? where("category_id = ?", category_id).order('posts.created_at DESC') : order('posts.created_at DESC') }
+	#Should be used for all public facing views
+	scope :recent_posts, ->(category_id = nil) {category_id ? where("category_id = ? AND visible = TRUE", category_id).order('posts.created_at DESC') : where("visible = TRUE").order('posts.created_at DESC') }
+	
+	#Should be used only for Admin functions (shows hidden posts)
+	scope :manage_posts, ->(category_id = nil) {category_id ? where("category_id = ?", category_id).order('posts.created_at DESC') : order('posts.created_at DESC') }
 	validates :category_id, :name, :content, presence: true
 
 	def profile_pic

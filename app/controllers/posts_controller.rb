@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   before_filter :get_selectors, only: [:new, :edit]
   before_filter :get_metadata
+  before_filter :validate_post, only: [:show]
+
   def index
     @posts = Post.recent_posts(params[:category_id])
   end
@@ -47,17 +49,24 @@ class PostsController < ApplicationController
   end
 
   def manage
-    @posts = Post.recent_posts(params[:category])
+    @posts = Post.manage_posts(params[:category])
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:name,:content,:user_id,:project_id,:category_id,images_attributes: [:id,:image])
+    params.require(:post).permit(:name,:content,:visible,:user_id,:project_id,:category_id,images_attributes: [:id,:image])
   end
 
   def get_selectors
     @projects = Project.selectprojects
     @categories = Category.selectcategories
+  end
+
+  def validate_post
+    post = Post.find(params[:id])
+    unless post.visible
+      redirect_to root_path, :alert => "That post does not exist"
+    end
   end
 end

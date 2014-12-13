@@ -14,6 +14,6 @@
 //= require hermitage
 //= require jquery_ujs
 //= require turbolinks
-//= require ckeditor/init
+//= require redactor-rails
 //= require bootstrap
 //= require_tree .

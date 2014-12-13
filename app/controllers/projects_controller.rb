@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
+	before_filter :validate_project, only: [:show]
 
 	def index
-		#@projects = Project.portfolio
 		@projects = Project.grid
 	end
 
@@ -52,6 +52,13 @@ class ProjectsController < ApplicationController
 	private
 
 	def project_params
-		params.require(:project).permit(:name,:github_url,:url,:description,:appstore_url,:snippet,images_attributes: [:id,:image])
+		params.require(:project).permit(:name,:visible,:github_url,:url,:description,:appstore_url,:snippet,images_attributes: [:id,:image])
+	end
+
+	def validate_project
+		project = Project.find(params[:id])
+		unless project.visible
+		  redirect_to root_path, :alert => "That project does not exist"
+		end
 	end
 end

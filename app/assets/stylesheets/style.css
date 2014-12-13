@@ -333,10 +333,6 @@ p {
     padding: 0px 20px 0px 20px;
 }
 
-.cke_contents { 
-    height: 600px !important; 
-}
-
 /******Login Page*****/
 .form-signin {
     border: 1px solid #D8D8D8;

@@ -41,7 +41,7 @@ gem 'pg'
 gem 'devise'
 
 # The editor for the HTML WYSIWYG content, attachments, storage on S3
-gem 'ckeditor'
+gem 'redactor-rails'
 gem "paperclip", "~> 4.2"
 gem 'aws-sdk', '~> 1.5.7'
 
