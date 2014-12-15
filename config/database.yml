@@ -14,10 +14,10 @@ development:
   database: blog_development
   template: template0
   pool: 5
-  username: <%= Rails.application.secrets[:DB_USERNAME] %>
-  password: <%= Rails.application.secrets[:DB_PASSWORD] %>
-  host: <%= Rails.application.secrets[:DB_HOST] %>
-  port: <%= Rails.application.secrets[:DB_PORT] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -28,10 +28,10 @@ test:
   database: blog_test
   template: template0
   pool: 5
-  username: <%= Rails.application.secrets[:DB_USERNAME] %>
-  password: <%= Rails.application.secrets[:DB_PASSWORD] %>
-  host: <%= Rails.application.secrets[:DB_HOST] %>
-  port: <%= Rails.application.secrets[:DB_PORT] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
   schema_search_path: public
 
 production:
@@ -40,7 +40,7 @@ production:
   database: blog_production
   template: template0
   pool: 5
-  username: <%= Rails.application.secrets[:DB_USERNAME] %>
-  password: <%= Rails.application.secrets[:DB_PASSWORD] %>
-  url: <%= Rails.application.secrets[:DATABASE_URL] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
   schema_search_path: public

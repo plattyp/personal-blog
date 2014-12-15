@@ -44,4 +44,6 @@ gem 'shareable'
 
 # For Heroku Deployment
 gem 'rails_12factor', group: :production
+gem "figaro"
+
 ruby "2.0.0"
