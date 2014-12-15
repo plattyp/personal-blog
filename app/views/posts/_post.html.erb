@@ -18,8 +18,8 @@
             </div>
 
             <div class="card-actions card-comments">
-                <button class="btn">+1</button>
-                <button class="btn">Share</button>
+                <%= link_to '<i class="icon icon-heart"></i>'.html_safe, likepost_path(:id => post.id), :class => 'btn', :role => 'button', :method => "PUT" %>
+                <%= link_to 'Share', 'http://www.facebook.com/sharer.php?u='+post_url(post), :class => 'btn', :role => 'button', :target => '_blank' %>
                 <% if post.has_project? && request.env['PATH_INFO'] == root_path %>
                 <%= link_to "Go to Project", project_path(:id => post.project_id), :class => 'btn pull-right', :role => 'button' %>
                 <% end %>

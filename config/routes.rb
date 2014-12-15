@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: [:index,:show]
+  put 'likepost' => 'posts#like'
   resources :users, only: [:show]
   resources :projects, only: [:index,:show]
 

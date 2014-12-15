@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+#Create initial metadata
+Metadata.create(title: 'Andrew'' Blog',keywords: 'Blog,Andrew,Platkin',description: 'A blog to help pass the time',profilepic_url: '',bannerpic_url: '')

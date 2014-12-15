@@ -11,17 +11,6 @@ class Project < ActiveRecord::Base
 		Project.all.pluck("name","id")
 	end
 
-	# def self.portfolio
-	# 	resultarray = Array.new
-	# 	projects = Project.recent_projects
-
-	# 	projects.each do |p|
-	# 		picture = p.images.mainpicture
-	# 		resultarray << [p.id,p.name,picture]
-	# 	end
-	# 	resultarray
-	# end
-
 	def self.grid
 		array = Array.new
 		resultarray = Array.new

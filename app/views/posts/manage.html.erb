@@ -7,6 +7,7 @@
 				<td>Related Project</td>
 				<td>Posted On</td>
 				<td>Visible?</td>
+				<td>Likes</td>
 				<td>Actions</td>
 			</tr>
 			<% @posts.each do |p| %>
@@ -16,6 +17,7 @@
 					<td><%= p.has_project? ? link_to("#{p.project.name}", project_path(p.project.id)) : nil %></td>
 					<td><%= p.created_at.to_s(:long) %></td>
 					<td><%= p.visible ? "Yes" : "No" %></td>
+					<td><%= p.likes %></td>
 					<td><%= link_to "Edit", edit_post_path(p.id) %> | 
 					<%= link_to "Delete", post_path(p.id), :method => :destroy %></td>
 				</tr>

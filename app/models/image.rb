@@ -28,10 +28,8 @@ class Image < ActiveRecord::Base
   		if picture != nil
   			picture.image.url
   		else
-  			"http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2012/3/6/1331051759134/Blue-sky-with-clouds-007.jpg"
+  			["Gears.png","LightBulb.png","Rocket.png"].sample
   		end
-
-  		#where(mainpicindicator: true).first.image.url
   	end
 
   	def self.allimages

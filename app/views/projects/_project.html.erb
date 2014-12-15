@@ -11,8 +11,8 @@
     <div class="card-body">
     </div>
     <div class="card-actions card-comments">
-        <%= link_to "Follow on Github", url_for(@project.github_url) , :class => 'btn pull-left', :role => 'button' if @project.has_github? %>
-        <%= link_to "Go to Appstore", url_for(@project.appstore_url) , :class => 'btn pull-right', :role => 'button' if @project.has_appstore? %>
-       <%= link_to "Go to Website", url_for(@project.url) , :class => 'btn pull-right', :role => 'button' if @project.has_website? %>
+        <%= link_to "Follow on Github", url_for(@project.github_url) , :class => 'btn btn-block', :role => 'button' if @project.has_github? %>
+        <%= link_to "Go to Appstore", url_for(@project.appstore_url) , :class => 'btn btn-block', :role => 'button' if @project.has_appstore? %>
+       <%= link_to "Go to Website", url_for(@project.url) , :class => 'btn btn-block', :role => 'button' if @project.has_website? %>
     </div>
 </div>

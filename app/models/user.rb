@@ -5,5 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessor :password
+  attr_accessor :signupcode
+
+  validates :signupcode, inclusion: {in: [Rails.application.secrets[:SIGNUPCODE]], :message => "is not correct"}
 end

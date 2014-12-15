@@ -52,6 +52,15 @@ class PostsController < ApplicationController
     @posts = Post.manage_posts(params[:category])
   end
 
+  def like
+    @post = Post.find(params[:id])
+    if @post.like
+      redirect_to :back, :notice => "Thanks for liking!"
+    else
+      redirect_to :back, :alert => "The post could not be liked"
+    end
+  end
+
   private
 
   def post_params

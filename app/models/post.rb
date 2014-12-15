@@ -15,7 +15,6 @@ class Post < ActiveRecord::Base
 	validates :category_id, :name, :content, presence: true
 
 	def profile_pic
-		#profilepic = Post.joins('LEFT OUTER JOIN images ON posts.id = images.imageable_id').where('images.imageable_type = ? AND posts.id = ?',"post",self.id).select('image_url').first
 		profilepic = Post.joins(:images).where('posts.id = ? AND images.mainpicindicator = ?', self.id, true).first
 	end
 
@@ -28,6 +27,11 @@ class Post < ActiveRecord::Base
 	end
 
 	def has_project?
-		self.project_id != nil
+		self.project_id != nil && self.project.visible
+	end
+
+	def like
+		self.likes += 1
+		self.save
 	end
 end

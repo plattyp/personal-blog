@@ -7,12 +7,6 @@ gem 'rails', '4.1.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 
-# Add Bootstrap, this relies on sass-rails
-# gem 'bootstrap-sass', '~> 3.3.1'
-
-# Requested for bootstrap to work with vendor prefixes
-# gem 'autoprefixer-rails'
-
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -48,15 +42,5 @@ gem 'aws-sdk', '~> 1.5.7'
 # Galleries
 gem 'hermitage'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
+# For social sharing
+gem 'shareable'
