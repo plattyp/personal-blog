@@ -21,6 +21,6 @@ class MetadataController < ApplicationController
 	private
 
 	def metadata_params
-		params.require(:metadata).permit(:title,:keywords,:description,:profilepic_url,:bannerpic_url,images_attributes: [:id,:image])
+		params.require(:metadata).permit(:title,:keywords,:description,:profilepic_url,:bannerpic_url,:googletags,images_attributes: [:id,:image])
 	end
 end

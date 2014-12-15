@@ -1,12 +1,1 @@
-<div id="footer">
-	<div class="container">
-		<p class="muted credit footercenter">
-			<%= link_to "Home", root_path %> | <%= link_to "Projects", projects_path %> |
-			<% if user_signed_in? %>
-				<%= link_to "Sign Out", destroy_user_session_path, method: :delete %> | <%= link_to "Manage", metadata_path %> | <%= link_to "Edit Account", edit_user_registration_path %>
-			<% else %>
-				<%= link_to "Log In", new_user_session_path %>
-			<% end %>
-		</p>
-	</div>
-</div>
+<%= @metadata.googletags.html_safe if @metadata.googletags != nil %>
