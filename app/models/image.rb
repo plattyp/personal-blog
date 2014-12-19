@@ -13,7 +13,7 @@ class Image < ActiveRecord::Base
 		  :retina   => ['1200>',     :jpg, :quality => 50]
 		},
 	:url => ":s3_domain_url",
-	:bucket => Rails.application.secrets.S3_BUCKET,
+	:bucket => ENV['S3_BUCKET'],
 	:path => ":class/:id.:style.:extension"
 
   	validates_attachment :image,
