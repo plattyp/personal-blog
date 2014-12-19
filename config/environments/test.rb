@@ -37,13 +37,11 @@ Rails.application.configure do
   # For attachments with PaperClip
   config.paperclip_defaults = {
     :storage => :s3,
-    :url => Rails.application.secrets.s3_url,
     :path => "/:class/:id/:style/:clean_filename",
-    :s3_host_alias => Rails.application.secrets.s3_host_alias,
     :s3_credentials => {
-      :bucket => Rails.application.secrets.s3_bucket,
-      :access_key_id => Rails.application.secrets.s3_access_key_id,
-      :secret_access_key => Rails.application.secrets.s3_secret_access_key
+      :bucket => ENV['S3_BUCKET'],
+      :access_key_id => ENV['S3_ACCESS_KEY'],
+      :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']
     }
   }
 
