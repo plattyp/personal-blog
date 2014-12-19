@@ -7,5 +7,5 @@ class User < ActiveRecord::Base
 
   attr_accessor :signupcode
 
-  validates :signupcode, inclusion: {in: [Rails.application.secrets[:SIGNUPCODE]], :message => "is not correct"}
+  validates :signupcode, inclusion: {in: [ENV['SIGNUPCODE']], :message => "is not correct"}
 end

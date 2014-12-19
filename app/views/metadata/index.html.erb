@@ -11,6 +11,8 @@
 			<%= f.text_field :profilepic_url %>
 			<%= f.label "Banner Pic" %>
 			<%= f.text_field :bannerpic_url %>
+			<%= f.label "Favicon Pic" %>
+			<%= f.text_field :favicon_url %>
 			<%= f.label "Google Tags" %>
 			<%= f.text_area :googletags %>
 			<%= render partial: "shared/imagecontrols", :locals => {:object => @metadata, :f => f} %><br /><br />

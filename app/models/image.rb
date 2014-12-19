@@ -19,7 +19,7 @@ class Image < ActiveRecord::Base
   	validates_attachment :image,
   		:presence => true,
   		:size => { :in => 0..2.megabytes },
-  		:content_type => { :content_type => /^image\/(jpeg|png|gif|tiff)$/ }
+  		:content_type => { :content_type => /^image\/(jpeg|png|gif|tiff|ico)$/ }
 
   	#Used to retrieve the main picture for a given post or project
   	def self.mainpicture
