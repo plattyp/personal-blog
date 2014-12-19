@@ -12,9 +12,5 @@
  *
  *= require redactor-rails
  *= require_self
- *= require bootplus-responsive
- *= require bootplus
- *= require style
- *= require projects
- *= require font-awesome.min
+ *= require_tree .
  */
