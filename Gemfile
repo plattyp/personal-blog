@@ -46,4 +46,7 @@ gem 'shareable'
 gem 'rails_12factor', group: :production
 gem "figaro"
 
+# For app monitoring
+gem 'newrelic_rpm'
+
 ruby "2.0.0"
