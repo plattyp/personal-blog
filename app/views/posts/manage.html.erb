@@ -19,7 +19,7 @@
 					<td><%= p.visible ? "Yes" : "No" %></td>
 					<td><%= p.likes %></td>
 					<td><%= link_to "Edit", edit_post_path(p.id) %> | 
-					<%= link_to "Delete", post_path(p.id), :method => :destroy %></td>
+					<%= link_to "Delete", post_path(p.id), :method => :delete %></td>
 				</tr>
 			<% end %>
 		</table><br />
