@@ -328,6 +328,9 @@ p {
     width: 20%;
 }
 
+.desc .active {
+    text-decoration: underline;
+}
 /*
 #footer .container  {
     text-align: center;
