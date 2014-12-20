@@ -74,7 +74,7 @@ class PostsController < ApplicationController
 
   def validate_post
     post = Post.find(params[:id])
-    unless post.visible
+    unless post.visible || user_signed_in?
       redirect_to root_path, :alert => "That post does not exist"
     end
   end
