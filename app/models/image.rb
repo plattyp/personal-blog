@@ -28,6 +28,7 @@ class Image < ActiveRecord::Base
   		if picture != nil
   			picture.image.url
   		else
+  			#Pick a random sample picture from images
   			["Gears.png","LightBulb.png","Rocket.png"].sample
   		end
   	end

@@ -1,6 +1,5 @@
 <div class="card">
     <div class="card-heading image">
-        <%= link_to "#{image_tag(@project.images.mainpicture)}".html_safe, project_path(@project.id), :class => "pull-right" if @project.has_images? %>
         <div class="card-heading-header">
             <h1><%= @project.name %>
                 <%= link_to '<i class="icon icon-pencil"></i>'.html_safe, edit_project_path(@project.id) if user_signed_in? %>
@@ -11,8 +10,8 @@
     <div class="card-body">
     </div>
     <div class="card-actions card-comments">
-        <%= link_to "Follow on Github", url_for(@project.github_url) , :class => 'btn btn-block', :role => 'button' if @project.has_github? %>
-        <%= link_to "Go to Appstore", url_for(@project.appstore_url) , :class => 'btn btn-block', :role => 'button' if @project.has_appstore? %>
-       <%= link_to "Go to Website", url_for(@project.url) , :class => 'btn btn-block', :role => 'button' if @project.has_website? %>
+        <%= link_to "Follow on Github", url_for(@project.github_url) , :class => 'btn btn-block', :role => 'button', :target => '_blank' if @project.has_github? %>
+        <%= link_to "Go to Appstore", url_for(@project.appstore_url) , :class => 'btn btn-block', :role => 'button', :target => '_blank' if @project.has_appstore? %>
+       <%= link_to "Go to Website", url_for(@project.url) , :class => 'btn btn-block', :role => 'button', :target => '_blank' if @project.has_website? %>
     </div>
 </div>
