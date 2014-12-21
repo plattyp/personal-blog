@@ -1,5 +1,4 @@
 class Image < ActiveRecord::Base
-	before_save :set_main_pic
 	
 	#Define relationships
 	belongs_to :imageable, polymorphic: true
@@ -33,6 +32,11 @@ class Image < ActiveRecord::Base
   		end
   	end
 
+  	#Used to retrieve the id of a main picture
+  	def self.mainpictureid
+  		picture = where(mainpicindicator: true).pluck("id").first
+  	end
+
   	def self.allimages
 		resultarray = Array.new
 		images = Image.all
@@ -48,12 +52,15 @@ class Image < ActiveRecord::Base
 	  image.url(:original)
 	end
 
-	private
-
-	#Set mainpicindicator flag to true for first uploaded pictures for a given project or post
-	def set_main_pic
-		if Image.where('imageable_id = ?',self.imageable_id).count == 0
-			self.mainpicindicator = true
+	def self.set_main_picture(imageable_id,image_id)
+		#Set all mainpicindicator attributes for given imageable_id to false
+		images = where("imageable_id = ?",imageable_id)
+		images.each do |i|
+			i.update(:mainpicindicator => false)
 		end
+
+		#Set the mainpicindicator to true for the image that was passed
+		image = Image.find(image_id)
+		image.update(:mainpicindicator => true)
 	end
 end

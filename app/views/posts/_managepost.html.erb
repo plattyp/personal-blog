@@ -29,7 +29,7 @@
 	</div><br />
 	<div class="row-fluid">
 		<div class="span12">
-			<%= render partial: "shared/imagecontrols", :locals => {:object => @post, :f => f} %>
+			<%= render partial: "shared/imagecontrols", :locals => {:object => @post, :f => f, :passingview => "post"} %>
 		</div>
 	</div><br />
 	<%= f.submit :submit, :class => 'btn' %>

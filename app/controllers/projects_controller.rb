@@ -25,10 +25,14 @@ class ProjectsController < ApplicationController
 
 	def edit
 		@project = Project.find(params[:id])
+		#Main picture so that we can use it for the default value of a given radio button
+		@mainpicture = @project.images.mainpictureid
 	end
 
 	def update
 		@project = Project.find(params[:id])
+		#Call method to update the image selected's mainpicindicator to true and the other images to false
+		Image.set_main_picture(@project.id,params[:project][:images])
 		if @project.update(project_params)
 			redirect_to edit_project_path(@project), :notice => "The project was updated successfully"
 		else

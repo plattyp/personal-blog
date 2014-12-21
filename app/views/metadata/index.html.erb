@@ -15,7 +15,7 @@
 			<%= f.text_field :favicon_url %>
 			<%= f.label "Google Tags" %>
 			<%= f.text_area :googletags %>
-			<%= render partial: "shared/imagecontrols", :locals => {:object => @metadata, :f => f} %><br /><br />
+			<%= render partial: "shared/imagecontrols", :locals => {:object => @metadata, :f => f, :passingview => "metadata"} %><br /><br />
 			<%= f.submit :submit, :class => 'btn' %>
 		<% end %>
 	</div>

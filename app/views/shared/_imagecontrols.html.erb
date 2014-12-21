@@ -1,12 +1,24 @@
 <ul class="nav nav-tabs" id="myTab">
-	<%= content_tag :li, link_to("Images","#images", :data => {:toggle => "tab"}), :class => "active" %>
+	<%= content_tag :li, link_to("Main Picture","#mainpicture", :data => {:toggle => "tab"}) %>
+	<%= content_tag :li, link_to("Manage Images","#images", :data => {:toggle => "tab"}), :class => "active"  %>
 	<%= content_tag :li, link_to("Upload","#upload", :data => {:toggle => "tab"}) %>
 </ul>
 <div class="tab-content">
+	<% if passingview == 'project' %>
+	<div class="tab-pane" id="mainpicture">
+		<%= f.label "Select Main Picture" %>
+		<div class="form-inline">
+			<%= f.collection_radio_buttons(:images, object.images, :id, :image) do |i| %>
+				<%= i.label(:class => "radio-inline") { i.radio_button(:checked => (i.value == mainpicture ? "checked" : "")) + image_tag(i.object.image.url(:thumb))} %>
+			<% end %>
+		</div>
+	</div>
+	<% end %>
 	<div class="tab-pane active" id="images">
+		<%= f.label "Select a picture to delete it" %>
 		<% object.images.each do |image| %>
 			<% if image.id != nil %>
-				<%= link_to "#{image_tag(image.image.url(:thumb))}".html_safe, image_path(:id => image.id, :class_id => object.id), method: :delete %>
+				<%= link_to "#{image_tag(image.image.url(:thumb))}".html_safe, image_path(:id => image.id, :class_id => object.id), method: :delete, data: { confirm: 'Are you sure that you want to delete this image?'} %>
 			<% end %>
 		<% end %>
 	</div>
