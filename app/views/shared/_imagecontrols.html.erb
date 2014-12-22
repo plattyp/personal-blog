@@ -1,5 +1,5 @@
 <ul class="nav nav-tabs" id="myTab">
-	<%= content_tag :li, link_to("Main Picture","#mainpicture", :data => {:toggle => "tab"}) %>
+	<%= content_tag :li, link_to("Main Picture","#mainpicture", :data => {:toggle => "tab"}) if passingview == 'project' %>
 	<%= content_tag :li, link_to("Manage Images","#images", :data => {:toggle => "tab"}), :class => "active"  %>
 	<%= content_tag :li, link_to("Upload","#upload", :data => {:toggle => "tab"}) %>
 </ul>
