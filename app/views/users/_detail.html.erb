@@ -1,0 +1,17 @@
+<div class="row-fluid post">
+    <div class="span12"> 
+        <div class="card">
+            <% if detailheader != nil %>
+                <div class="card-heading image">
+                    <div class="card-heading-header">
+                        <h2><%= detailheader %></h2>
+                    </div>
+                </div>
+            <hr>
+            <% end %>
+            <div class="card-body row">
+                    <%= detail.html_safe %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,7 +14,7 @@
             <div class="desc">
                     <%= link_to "Home", root_path, :class => "#{'active' if request.path == root_path}" %> | <%= link_to "Projects", projects_path , :class => "#{'active' if request.path == projects_path}" %> |
                     <% if user_signed_in? %>
-                        <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> | <%= link_to "Manage", metadata_path, :class => "#{'active' if request.path == metadata_path}" %> | <%= link_to "Edit Account", edit_user_registration_path, :class => "#{'active' if request.path == edit_user_registration_path}" %>
+                        <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> | <%= link_to "Manage", metadata_path, :class => "#{'active' if request.path == metadata_path}" %>
                     <% else %>
                         <%= link_to "Log In", new_user_session_path, :class => "#{'active' if request.path == new_user_session_path}" %>
                     <% end %>

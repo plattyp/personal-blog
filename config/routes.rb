@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :projects, only: [:new, :create, :edit, :update, :destroy]
     resources :metadata
     resources :images
+    resources :users do
+      resources :userdetails
+    end
     get 'manageposts' => 'posts#manage'
     get 'manageprojects' => 'projects#manage'
   end

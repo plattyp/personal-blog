@@ -1,0 +1,18 @@
+<%= form_for [@user, @userdetail] do |f| %>
+	<%= f.fields_for :image, @image do |i| %>
+		<%= i.label "Profile Picture" %>
+		<%= i.file_field :image %>
+	<% end %>
+	<%= f.file_field :image %>
+	<%= f.label "Description" %>
+	<%= f.text_area :description, :class => "redactor" %><br />
+	<%= f.label "Education" %>
+	<%= f.text_area :education, :class => "redactor" %><br />
+	<%= f.label "Work Experience" %>
+	<%= f.text_area :workexperience, :class => "redactor" %><br />
+	<%= f.label "Hobbies" %>
+	<%= f.text_area :hobbies, :class => "redactor" %><br />
+	<%= f.submit :submit, :class => 'btn' %>
+<% end %>
+
+<%= link_to "Edit Account", edit_user_registration_path %><br />
