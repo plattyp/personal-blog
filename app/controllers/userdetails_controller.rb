@@ -16,12 +16,16 @@ class UserdetailsController < ApplicationController
 
 	def edit
 		@userdetail = @user.userdetail
-		@image = @userdetail.build_image
 	end
 
 	def update
 		@userdetail = Userdetail.find(params[:id])
+
 		if @userdetail.update(userdetail_params)
+			#On successful save, delete the old profile picture
+			@userdetail.replace_profile_pic
+
+			#Continue with redirects
 			redirect_to edit_user_userdetail_path(@user,@userdetail), :notice => "Details were updated successfully"
 		else
 			redirect_to edit_user_userdetail_path(@user,@userdetail), :alert => "Details were unable to be updated"
@@ -31,7 +35,7 @@ class UserdetailsController < ApplicationController
 	private
 
 	def userdetail_params
-		params.require(:userdetail).permit(:description,:education,:workexperience,:hobbies,image_attributes: [:image])
+		params.require(:userdetail).permit(:description,:education,:workexperience,:hobbies,images_attributes: [:id, :image])
 	end
 
 	def get_current_user

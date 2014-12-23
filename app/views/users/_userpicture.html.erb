@@ -6,7 +6,8 @@
         </div>
     </div>
     <div class="card-body">
-    </div>
+        <%= image_tag(user.userdetail.images.first.image.url(:original)) if user.userdetail.has_profilepic? %>
+    </div><br />
     <div class="card-actions card-comments">
         <%= link_to "Follow on Github", "http://google.com", :class => 'btn btn-block', :role => 'button', :target => '_blank' %>
     </div>

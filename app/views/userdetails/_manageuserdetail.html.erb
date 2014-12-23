@@ -1,9 +1,9 @@
 <%= form_for [@user, @userdetail] do |f| %>
-	<%= f.fields_for :image, @image do |i| %>
-		<%= i.label "Profile Picture" %>
+	<%= image_tag(@userdetail.images.first.image.url(:thumb)) if @userdetail.has_profilepic? %>
+	<%= f.fields_for :images, @userdetail.images.build do |i| %>
+		<%= i.label "Replace Profile Picture" %>
 		<%= i.file_field :image %>
 	<% end %>
-	<%= f.file_field :image %>
 	<%= f.label "Description" %>
 	<%= f.text_area :description, :class => "redactor" %><br />
 	<%= f.label "Education" %>

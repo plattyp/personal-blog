@@ -52,6 +52,7 @@ class Image < ActiveRecord::Base
 	  image.url(:original)
 	end
 
+	#Used to change out a mainpicture when a new one is selected for project or post
 	def self.set_main_picture(imageable_id,image_id)
 		#Set all mainpicindicator attributes for given imageable_id to false
 		images = where("imageable_id = ?",imageable_id)
