@@ -4,6 +4,12 @@
 		<%= i.label "Replace Profile Picture" %>
 		<%= i.file_field :image %>
 	<% end %>
+	<%= f.label "Github URL"%>
+	<%= f.url_field :github_url %>
+	<%= f.label "Linkedin URL"%>
+	<%= f.url_field :linkedin_url %>
+	<%= f.label "Allow Messages (email)" %>
+	<%= f.check_box :allowmessages %>
 	<%= f.label "Description" %>
 	<%= f.text_area :description, :class => "redactor" %><br />
 	<%= f.label "Education" %>

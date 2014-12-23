@@ -35,7 +35,7 @@ class UserdetailsController < ApplicationController
 	private
 
 	def userdetail_params
-		params.require(:userdetail).permit(:description,:education,:workexperience,:hobbies,images_attributes: [:id, :image])
+		params.require(:userdetail).permit(:description,:education,:workexperience,:hobbies,:github_url,:linkedin_url,:allowmessages,images_attributes: [:id, :image])
 	end
 
 	def get_current_user

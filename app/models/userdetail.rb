@@ -15,6 +15,16 @@ class Userdetail < ActiveRecord::Base
 		profile_pic != nil
 	end
 
+	#Returns true if a user has a github url established
+	def has_github?
+		!self.github_url.blank?
+	end
+
+	#Returns true if a user has a linkedin url established
+	def has_linkedin?
+		!self.linkedin_url.blank?
+	end
+
 	#Used to delete an old profile picture for a user with the new one just uploaded
 	def replace_profile_pic
 		images = Userdetail.joins(:images).where('userdetails.id = ?', self.id).select('images.id,images.created_at').order('images.created_at DESC').pluck('images.id,images.created_at')
