@@ -6,11 +6,11 @@
         </div>
     </div>
     <div class="card-body">
-        <%= image_tag(user.userdetail.images.first.image.url(:original)) if user.userdetail.has_profilepic? %>
+        <%= image_tag(user.userdetail.images.first.image.url(:original)) if user.has_details? && user.userdetail.has_profilepic? %>
     </div><br />
     <div class="card-actions card-comments">
-        <%= link_to "Follow on Github", user.userdetail.github_url, :class => 'btn btn-block', :role => 'button', :target => '_blank' if user.userdetail.has_github? %>
-        <%= link_to "Go to LinkedIn", user.userdetail.linkedin_url, :class => 'btn btn-block', :role => 'button', :target => '_blank' if user.userdetail.has_linkedin? %>
-        <%= link_to "Message Me", '#', :class => 'btn btn-block', :role => 'button' if user.userdetail.allowmessages %>
+        <%= link_to "Follow on Github", user.userdetail.github_url, :class => 'btn btn-block', :role => 'button', :target => '_blank' if user.has_details? && user.userdetail.has_github? %>
+        <%= link_to "Go to LinkedIn", user.userdetail.linkedin_url, :class => 'btn btn-block', :role => 'button', :target => '_blank' if user.has_details? && user.userdetail.has_linkedin? %>
+        <%= link_to "Message Me", '#', :class => 'btn btn-block', :role => 'button' if user.has_details? && user.userdetail.allowmessages %>
     </div>
 </div>

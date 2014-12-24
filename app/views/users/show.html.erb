@@ -1,11 +1,17 @@
 <div class="row-fluid">
-	<div class="span3">
-		<%= render partial: 'userpicture', :locals => {:user => @user} %>
-	</div>
-	<div class="span9">
-		<%= render partial: 'detail', :locals => {:detailheader => nil, :detail => @user.userdetail.description} %>
-		<%= render partial: 'detail', :locals => {:detailheader => 'Education', :detail => @user.userdetail.education} %>
-		<%= render partial: 'detail', :locals => {:detailheader => 'Work Experience', :detail => @user.userdetail.workexperience} %>
-		<%= render partial: 'detail', :locals => {:detailheader => 'Hobbies', :detail => @user.userdetail.hobbies} %>
-	</div>
+	<% if @user.has_details? %>
+		<div class="span3">
+			<%= render partial: 'userpicture', :locals => {:user => @user} %>
+		</div>
+		<div class="span9">
+				<%= render partial: 'detail', :locals => {:detailheader => nil, :detail => @user.userdetail.description} %>
+				<%= render partial: 'detail', :locals => {:detailheader => 'Education', :detail => @user.userdetail.education} %>
+				<%= render partial: 'detail', :locals => {:detailheader => 'Work Experience', :detail => @user.userdetail.workexperience} %>
+				<%= render partial: 'detail', :locals => {:detailheader => 'Hobbies', :detail => @user.userdetail.hobbies} %>
+		</div>
+	<% else %>
+		<div class="span12">
+			<h3>User has not set up profile yet</h3>
+		</div>
+	<% end %>
 </div>

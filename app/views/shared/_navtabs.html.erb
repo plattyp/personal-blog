@@ -3,7 +3,7 @@
         <% case tabcontent %>
         <% when 'Admin' %>
             <%= content_tag :li, link_to("Manage Site", metadata_path), :class => activetab == 'Manage Site' ? 'active' : 'inactive' %>
-            <%= content_tag :li, link_to("Manage User Details", current_user.userdetail == nil ? new_user_userdetail_path(current_user.id) : edit_user_userdetail_path(current_user.id,current_user.userdetail)), :class => activetab == 'Manage User Details' ? 'active' : 'inactive' %>
+            <%= content_tag :li, link_to("Manage User Details", current_user.has_details? && request.fullpath != new_user_userdetail_path(current_user.id) ? edit_user_userdetail_path(current_user.id,current_user.userdetail) : new_user_userdetail_path(current_user.id)), :class => activetab == 'Manage User Details' ? 'active' : 'inactive' %>
             <%= content_tag :li, link_to("Manage Categories", categories_path), :class => activetab == 'Manage Categories' ? 'active' : 'inactive' %>
             <%= content_tag :li, link_to("Manage Posts", manageposts_path), :class => activetab == 'Manage Posts' ? 'active' : 'inactive' %>
             <%= content_tag :li, link_to("Manage Projects", manageprojects_path), :class => activetab == 'Manage Projects' ? 'active' : 'inactive' %>
