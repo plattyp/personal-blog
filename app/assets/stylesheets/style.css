@@ -312,6 +312,18 @@ p {
     background-color: #FADC03;
 }
 
+/******CUSTOM PROFILE PIC*******/
+.card.userprofile {
+    padding-top: 0px;
+}
+
+.card-body.profilepic {
+    margin-top: 0px;
+}
+
+.card-body.userprofile {
+    margin-top: 0px;
+}
 /******footer*****/
 #push,
 #footer {
