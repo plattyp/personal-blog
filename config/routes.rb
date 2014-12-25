@@ -27,5 +27,5 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   #Redirect all error pages to the root path
-  get '*path' => 'posts#index'
+  #get '*path' => 'posts#index'
 end
