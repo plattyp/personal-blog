@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
   validates :signupcode, inclusion: {in: [ENV['SIGNUPCODE']], :message => "is not correct"}
 
   def has_details?
-    puts "Evaluated"
   	self.userdetail != nil
   end
 

@@ -9,7 +9,7 @@
                     <h1><%= link_to post.name, post_path(post) %>
                     <%= link_to '<i class="icon icon-pencil"></i>'.html_safe, edit_post_path(post.id) if user_signed_in? %>
                     </h1>
-                    <h3><span> Published <%= post.created_at.to_s(:long) %></span>  <span>  By <%= link_to post.user.name, user_path(post.user.id) %>  in <%= link_to post.category.name, posts_path(:category_id => post.category_id) %> </span> </h3>
+                    <h3><span> Published <%= post.created_at.to_s(:long) %></span>  <span>  By <%= link_to post.user.name, user_path(post.user) %>  in <%= link_to post.category.name, posts_path(:category_id => post.category_id) %> </span> </h3>
                 </div>
             </div>
             <hr>

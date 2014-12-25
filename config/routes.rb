@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:index,:show]
   put 'likepost' => 'posts#like'
-  resources :users, only: [:show]
+  get 'users/:id' => 'users#show'
   resources :projects, only: [:index,:show]
 
   resources :projects do
