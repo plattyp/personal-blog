@@ -9,6 +9,8 @@
 			<%= f.text_area :description %>
 			<%= f.label "Profile Pic" %>
 			<%= f.text_field :profilepic_url %>
+			<%= f.label "User for About Me Page" %>
+			<%= f.select :aboutmeuser, @users, :include_blank => '- No Users Selected -' %>
 			<%= f.label "Banner Pic" %>
 			<%= f.text_field :bannerpic_url %>
 			<%= f.label "Favicon Pic" %>

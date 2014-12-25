@@ -1,4 +1,5 @@
 class MetadataController < ApplicationController
+  	before_filter :get_selectors, only: [:index,:sitemgmt]
 
 	def index
 		@metadata = Metadata.baseinfo.first
@@ -21,6 +22,10 @@ class MetadataController < ApplicationController
 	private
 
 	def metadata_params
-		params.require(:metadata).permit(:title,:keywords,:description,:profilepic_url,:bannerpic_url,:favicon_url,:googletags,images_attributes: [:id,:image])
+		params.require(:metadata).permit(:title,:keywords,:description,:profilepic_url,:bannerpic_url,:favicon_url,:googletags,:aboutmeuser, images_attributes: [:id,:image])
+	end
+
+	def get_selectors
+		@users = User.selectusers
 	end
 end

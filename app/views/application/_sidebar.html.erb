@@ -12,7 +12,11 @@
         </div>
         <div>
             <div class="desc">
-                    <%= link_to "Home", root_path, :class => "#{'active' if request.path == root_path}" %> | <%= link_to "Projects", projects_path , :class => "#{'active' if request.path == projects_path}" %> |
+                    <%= link_to "Home", root_path, :class => "#{'active' if request.path == root_path}" %> | <%= link_to "Projects", projects_path , :class => "#{'active' if request.path == projects_path}" %> | 
+
+                    <% unless @metadata.aboutmeuser.blank? %>
+                    <%= link_to "About Me", user_path(@metadata.aboutmeuser), :class => "#{'active' if request.path == user_path(@metadata.aboutmeuser)}" %> | 
+                    <% end %>
                     <% if user_signed_in? %>
                         <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> | <%= link_to "Manage", metadata_path, :class => "#{'active' if request.path == metadata_path}" %>
                     <% else %>

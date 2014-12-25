@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
 
   validates :signupcode, inclusion: {in: [ENV['SIGNUPCODE']], :message => "is not correct"}
 
+  def self.selectusers
+    User.all.pluck("name","id")
+  end
+
   def has_details?
   	self.userdetail != nil
   end
