@@ -91,6 +91,9 @@ Rails.application.configure do
     }
   }
 
+  # For the configuration of devise
+  config.action_mailer.default_url_options = { :host => ENV['SMTP_DOMAIN'] }
+
   # Method for delivery
   config.action_mailer.delivery_method = :smtp
 
