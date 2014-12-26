@@ -10,6 +10,8 @@
     <div class="card-actions card-comments">
         <%= link_to "Follow on Github", user.userdetail.github_url, :class => 'btn btn-block', :role => 'button', :target => '_blank' if user.has_details? && user.userdetail.has_github? %>
         <%= link_to "Go to LinkedIn", user.userdetail.linkedin_url, :class => 'btn btn-block', :role => 'button', :target => '_blank' if user.has_details? && user.userdetail.has_linkedin? %>
-        <%= link_to "Message Me", '#', :class => 'btn btn-block', :role => 'button' if user.has_details? && user.userdetail.allowmessages %>
+        <%= link_to "Message Me", message_user_path(user.id), {:class => 'btn btn-block', :role => 'button', :remote => true, 'data-toggle' => "modal"} if user.has_details? && user.userdetail.allowmessages %>
     </div>
 </div>
+
+<div id="modal-window" class="modal hide fade" data-backdrop="false" role="dialog" aria-hidden="true"></div>
