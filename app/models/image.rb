@@ -6,7 +6,7 @@ class Image < ActiveRecord::Base
 	#For Paperclip
 	has_attached_file :image, 
 	:styles => {
-		  :thumb    => ['100x100#',  :jpg, :quality => 50],
+		  :thumb    => ['100x100#',  :jpg, :quality => 50]
 		},
 	:url => ":s3_domain_url",
 	:bucket => ENV['S3_BUCKET'],
