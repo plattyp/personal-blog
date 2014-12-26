@@ -7,9 +7,6 @@ class Image < ActiveRecord::Base
 	has_attached_file :image, 
 	:styles => {
 		  :thumb    => ['100x100#',  :jpg, :quality => 50],
-		  :preview  => ['480x480#',  :jpg, :quality => 50],
-		  :large    => ['600>',      :jpg, :quality => 80],
-		  :retina   => ['1200>',     :jpg, :quality => 50]
 		},
 	:url => ":s3_domain_url",
 	:bucket => ENV['S3_BUCKET'],
