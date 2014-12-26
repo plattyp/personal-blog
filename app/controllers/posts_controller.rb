@@ -55,6 +55,7 @@ class PostsController < ApplicationController
   def like
     @post = Post.find(params[:id])
     if @post.like
+      UserMessage.send_user_like(@post).deliver
       redirect_to :back, :notice => "Thanks for liking!"
     else
       redirect_to :back, :alert => "The post could not be liked"
