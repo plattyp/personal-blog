@@ -46,9 +46,6 @@ Rails.application.configure do
     }
   }
 
-# Default Mailer Host
-  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
-
   # Method for delivery
   config.action_mailer.delivery_method = :smtp
 

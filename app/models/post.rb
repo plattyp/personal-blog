@@ -14,22 +14,27 @@ class Post < ActiveRecord::Base
 	scope :manage_posts, ->(category_id = nil) {category_id ? where("category_id = ?", category_id).order('posts.created_at DESC') : order('posts.created_at DESC') }
 	validates :category_id, :name, :content, presence: true
 
+	#Returns back the profile pic for the post or Picture indicated as the Main Pic Indicator as true
 	def profile_pic
 		profilepic = Post.joins(:images).where('posts.id = ? AND images.mainpicindicator = ?', self.id, true).first
 	end
 
+	#Returns true or false if the post has a main picture
 	def has_profilepic?
 		profile_pic != nil
 	end
 
+	#Returns true or false if the post has any images
 	def has_images?
 		Post.joins(:images).where('posts.id = ?', self.id).count > 0
 	end
 
+	#Returns true or false if the post has a project that is visible
 	def has_project?
 		self.project_id != nil && self.project.visible
 	end
 
+	#Increments the likes attribute on the Post and saves it
 	def like
 		self.likes += 1
 		self.save
