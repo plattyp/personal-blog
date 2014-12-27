@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141225194017) do
+ActiveRecord::Schema.define(version: 20141227232957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20141225194017) do
     t.text     "googletags"
     t.string   "favicon_url"
     t.integer  "aboutmeuser"
+    t.text     "headertags"
   end
 
   create_table "posts", force: true do |t|
