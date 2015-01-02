@@ -22,7 +22,7 @@ class MetadataController < ApplicationController
 	private
 
 	def metadata_params
-		params.require(:metadata).permit(:title,:keywords,:description,:profilepic_url,:bannerpic_url,:favicon_url,:googletags,:aboutmeuser,:headertags, images_attributes: [:id,:image])
+		params.require(:metadata).permit(:title,:metatitle,:keywords,:description,:metadescription,:profilepic_url,:bannerpic_url,:favicon_url,:googletags,:aboutmeuser,:headertags, images_attributes: [:id,:image])
 	end
 
 	def get_selectors

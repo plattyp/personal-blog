@@ -29,6 +29,18 @@
 	</div><br />
 	<div class="row-fluid">
 		<div class="span12">
+			<%= f.label "Meta Description" %>
+			<%= f.text_area :metadescription %>
+		</div>
+	</div><br />
+	<div class="row-fluid">
+		<div class="span12">
+			<%= f.label "Meta Keywords" %>
+			<%= f.text_area :metakeywords %>
+		</div>
+	</div><br />
+	<div class="row-fluid">
+		<div class="span12">
 			<%= render partial: "shared/imagecontrols", :locals => {:object => @post, :f => f, :passingview => "post"} %>
 		</div>
 	</div><br />

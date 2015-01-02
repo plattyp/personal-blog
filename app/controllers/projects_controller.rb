@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
 	def update
 		@project = Project.find(params[:id])
 		#Call method to update the image selected's mainpicindicator to true and the other images to false
-		Image.set_main_picture(@project.id,params[:project][:images])
+		Image.set_main_picture(@project.id,params[:project][:images]) unless params[:project][:images].blank?
 		if @project.update(project_params)
 			redirect_to edit_project_path(@project), :notice => "The project was updated successfully"
 		else
@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
 	private
 
 	def project_params
-		params.require(:project).permit(:name,:visible,:github_url,:url,:description,:appstore_url,:snippet,images_attributes: [:id,:image])
+		params.require(:project).permit(:name,:visible,:github_url,:url,:description,:keywords,:appstore_url,:snippet,images_attributes: [:id,:image])
 	end
 
 	def validate_project
