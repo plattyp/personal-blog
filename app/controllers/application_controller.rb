@@ -34,7 +34,12 @@ class ApplicationController < ActionController::Base
         when "show"
           user = User.find(params[:id])
           @metadata.metatitle = user.name + " | About Me"
-          @metadata.metadescription = user.userdetail.description
+          #Get the description
+          description = user.userdetail.description
+          #Parsed out using Nokogiri
+          desctext = Nokogiri::HTML(description)
+          #Setting description
+          @metadata.metadescription = desctext.text
         end
     end
   end

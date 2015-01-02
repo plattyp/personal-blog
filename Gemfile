@@ -41,6 +41,9 @@ gem 'hermitage'
 # For social sharing
 gem 'shareable'
 
+# For parsing HTML Content
+gem 'nokogiri'
+
 # For Heroku Deployment
 gem 'rails_12factor', group: :production
 gem "figaro"
