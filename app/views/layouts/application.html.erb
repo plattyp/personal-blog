@@ -3,7 +3,6 @@
 <head>
   <title><%= @metadata.metatitle if @metadata.metatitle != nil %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="title" content="<%= @metadata.metatitle if @metadata.metatitle != nil %>" />
   <meta name="keywords" content="<%= @metadata.keywords if @metadata.keywords != nil %>" />
   <meta name="description" content="<%= @metadata.metadescription if @metadata.metadescription != nil %>" />
   <%= @metadata.headertags.html_safe if @metadata.headertags != nil %>
