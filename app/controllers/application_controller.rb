@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
         when "show"
           project = Project.find(params[:id])
           @metadata.metadescription = project.description
-          @metdata.keywords = project.keywords
+          @metadata.keywords = project.keywords
           @metadata.metatitle = @metadata.metatitle + " | " + project.name
         end
       when "users"
