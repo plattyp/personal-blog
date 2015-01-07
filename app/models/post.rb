@@ -12,7 +12,9 @@ class Post < ActiveRecord::Base
 	
 	#Should be used only for Admin functions (shows hidden posts)
 	scope :manage_posts, ->(category_id = nil) {category_id ? where("category_id = ?", category_id).order('posts.created_at DESC') : order('posts.created_at DESC') }
-	validates :category_id, :name, :content, presence: true
+	
+	#Validations
+	validates :category_id, :name, :content, :user_id, presence: true
 
 	#Returns back the profile pic for the post or Picture indicated as the Main Pic Indicator as true
 	def profile_pic
