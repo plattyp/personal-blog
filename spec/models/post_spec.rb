@@ -29,16 +29,20 @@ describe Post do
 			@post = FactoryGirl.create(:post)
 		end
 
-		it "returns false if it does not have a profile picture" do
-			@post.has_profilepic? == false
+		context "#has_profilepic?" do
+			it "returns false if it does not have a profile picture" do
+				@post.has_profilepic? == false
+			end
 		end
 
-		it "increments likes by 1" do
-			@post.like == 1
+		context "#like" do
+			it "increments likes by 1" do
+				@post.like == 1
+			end
 		end
 	end
 
-	describe "scopes are working correctly" do
+	describe "scopes" do
 
 		# Clean up between tests
 		before(:each) do
@@ -48,7 +52,7 @@ describe Post do
 			@post3 = FactoryGirl.create(:post, category_id: 2, visible: true)
 		end
 
-		context "recent_posts scope" do
+		context ".recent_posts" do
 
 			it "returns a sorted array of posts that are visible" do
 				expect(Post.recent_posts).to be == [@post3,@post1]
@@ -60,6 +64,18 @@ describe Post do
 
 			it "does not return a not visible post that belongs to a category" do
 				expect(Post.recent_posts(1)).not_to be == [@post2,@post1]
+			end
+
+		end
+
+		context ".manage_posts" do
+
+			it "returns a sorted array of posts that are visible and not visible" do
+				expect(Post.manage_posts).to be == [@post3,@post2,@post1]
+			end
+
+			it "returns a sorted array of posts that are visible and not visible and belong to a category" do
+				expect(Post.manage_posts(1)).to be == [@post2,@post1]
 			end
 
 		end

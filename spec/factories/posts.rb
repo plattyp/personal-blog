@@ -5,8 +5,8 @@ FactoryGirl.define do
 		f.name { Faker::Lorem.sentence }
 		f.content { Faker::Lorem.paragraph }
 		f.user_id 1
-		f.category_id { Faker::Number.number(1) }
-		f.project_id { Faker::Number.number(1) }
+		f.category_id 1
+		f.project_id 1
 		f.visible false
 		f.likes { Faker::Number.number(1) }
 		f.metadescription { Faker::Lorem.sentence }
