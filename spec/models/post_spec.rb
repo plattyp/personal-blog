@@ -132,14 +132,4 @@ describe Post do
 		end
 
 	end
-
-	# it "returns true if it has a project" do
-	# 	post = FactoryGirl.create(:post, project_id: 1)
-	# 	post.has_project? == true
-	# end
-
-	# it "returns false if it does not have a project" do
-	# 	post = FactoryGirl.create(:post, project_id: nil)
-	# 	post.has_project? == false
-	# end
 end

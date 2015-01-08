@@ -16,11 +16,6 @@ class Post < ActiveRecord::Base
 	#Validations
 	validates :category_id, :name, :content, :user_id, presence: true
 
-	#Returns back the profile pic for the post or Picture indicated as the Main Pic Indicator as true
-	def profile_pic
-		profilepic = Post.joins(:images).where('posts.id = ? AND images.mainpicindicator = ?', self.id, true).first
-	end
-
 	#Returns true or false if the post has a main picture
 	def has_profilepic?
 		profile_pic != nil
@@ -40,5 +35,12 @@ class Post < ActiveRecord::Base
 	def like
 		self.likes += 1
 		self.save
+	end
+
+	private
+
+	#Returns back the profile pic for the post or Picture indicated as the Main Pic Indicator as true
+	def profile_pic
+		profilepic = Post.joins(:images).where('posts.id = ? AND images.mainpicindicator = ?', self.id, true).first
 	end
 end
