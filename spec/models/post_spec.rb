@@ -30,8 +30,59 @@ describe Post do
 		end
 
 		context "#has_profilepic?" do
-			it "returns false if it does not have a profile picture" do
-				@post.has_profilepic? == false
+			it "does not have any images" do
+				expect(@post.has_profilepic?).to be == false
+			end
+
+			it "has an image but it has a mainpicindicator set to false" do
+				# Create an image associated with Post that has mainpicindicator as false
+				FactoryGirl.create(:image, imageable_id: @post.id, imageable_type: "Post", mainpicindicator: false)
+				expect(@post.has_profilepic?).to be == false
+			end
+
+			it "has an image that has mainpicindicator set to true" do
+				# Create an image associated with Post that has mainpicindicator as true
+				FactoryGirl.create(:image, imageable_id: @post.id, imageable_type: "Post", mainpicindicator: true)
+				expect(@post.has_profilepic?).to be == true
+			end
+		end
+
+		context "#has_images?" do
+			it "has no images" do
+				expect(@post.has_images?).to be == false
+			end
+
+			it "has images" do
+				FactoryGirl.create(:image, imageable_id: @post.id, imageable_type: "Post")
+				expect(@post.has_images?).to be == true
+			end
+		end
+
+		context "#has_project?" do
+			it "has no project" do
+				expect(@post.has_project?).to be == false
+			end
+
+			it "has a project, but it is not visible" do
+				# Create project
+				project = FactoryGirl.create(:project, visible: false)
+
+				# Associate post with project
+				@post.project_id = project.id
+				@post.save
+
+				expect(@post.has_project?).to be == false
+			end
+
+			it "has a project, and it is visible" do
+				# Create project
+				project = FactoryGirl.create(:project, visible: true)
+
+				# Associate post with project
+				@post.project_id = project.id
+				@post.save
+
+				expect(@post.has_project?).to be == true
 			end
 		end
 
