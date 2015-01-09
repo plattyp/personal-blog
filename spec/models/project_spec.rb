@@ -89,14 +89,24 @@ describe Project do
 
 		end
 
-		# context ".grid" do
+		context ".grid" do
+			before(:each) do
+				# Add some additional projets for the test
+				@project3 = FactoryGirl.create(:project)
+				@project4 = FactoryGirl.create(:project)
+				@project5 = FactoryGirl.create(:project)
 
-		# 	it "returns a grid by 3s of projects" do
-		# 		@project3 = FactoryGirl.create(:project)
-		# 		@project4 = FactoryGirl.create(:project)
-		# 		@project5 = FactoryGirl.create(:project)
-
-		# 	end
-		# end
+				# Create images associated with these projects
+				Project.all.each do |p|
+					FactoryGirl.create(:image, imageable_id: p.id, imageable_type: "Project", mainpicindicator: true)
+				end
+			end
+			
+			it "returns a grid by 3s of projects with an image" do
+				expect(Project.grid).to be == [
+					[[@project5.id,@project5.name,@project5.images.mainpicture],[@project4.id,@project4.name,@project4.images.mainpicture],[@project3.id,@project3.name,@project3.images.mainpicture]],
+					[[@project2.id,@project2.name,@project2.images.mainpicture],[@project1.id,@project1.name,@project1.images.mainpicture]]]
+			end
+		end
 	end
 end
