@@ -11,5 +11,13 @@ FactoryGirl.define do
 		f.likes { Faker::Number.number(1) }
 		f.metadescription { Faker::Lorem.sentence }
 		f.metakeywords { Faker::Lorem.sentence }
+
+		factory :invalid_post do
+			category_id nil
+		end
+
+		factory :visible_post do
+			visible true
+		end
 	end
 end
