@@ -7,6 +7,15 @@ class Project < ActiveRecord::Base
 	
 	scope :recent_projects, -> {where("visible = TRUE").order('projects.created_at DESC')}
 
+	## For URL Friendly Names
+	def slug
+		name.downcase.gsub(" ", "-").gsub(".","")
+	end
+
+	def to_param
+		"#{id}-#{slug}"
+	end
+
 	#Used to generate an array that can be used for form selectors
 	def self.selectprojects
 		Project.all.pluck("name","id")
@@ -22,7 +31,7 @@ class Project < ActiveRecord::Base
 		projects.each do |p|
 			counter += 1
 			picture = p.images.mainpicture
-			array << [p.id,p.name,picture]
+			array << [p.to_param,p.name,picture]
 			if counter == 3
 				resultarray << array
 				array = Array.new

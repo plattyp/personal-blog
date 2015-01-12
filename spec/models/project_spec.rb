@@ -104,8 +104,8 @@ describe Project do
 			
 			it "returns a grid by 3s of projects with an image" do
 				expect(Project.grid).to be == [
-					[[@project5.id,@project5.name,@project5.images.mainpicture],[@project4.id,@project4.name,@project4.images.mainpicture],[@project3.id,@project3.name,@project3.images.mainpicture]],
-					[[@project2.id,@project2.name,@project2.images.mainpicture],[@project1.id,@project1.name,@project1.images.mainpicture]]]
+					[[@project5.to_param,@project5.name,@project5.images.mainpicture],[@project4.to_param,@project4.name,@project4.images.mainpicture],[@project3.to_param,@project3.name,@project3.images.mainpicture]],
+					[[@project2.to_param,@project2.name,@project2.images.mainpicture],[@project1.to_param,@project1.name,@project1.images.mainpicture]]]
 			end
 		end
 	end
