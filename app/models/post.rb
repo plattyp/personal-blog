@@ -16,6 +16,15 @@ class Post < ActiveRecord::Base
 	#Validations
 	validates :category_id, :name, :content, :user_id, presence: true
 
+	## For URL Friendly Names
+	def slug
+		name.downcase.gsub(" ", "-").gsub(".","")
+	end
+
+	def to_param
+		"#{id}-#{slug}"
+	end
+
 	#Returns true or false if the post has a main picture
 	def has_profilepic?
 		profile_pic != nil
