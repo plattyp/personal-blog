@@ -83,7 +83,9 @@ describe PostsController do
 
 	describe 'POST #create' do
 		before(:each) do
-			#login_user
+			#Uses the controller_helper sign_un method to authenticate the route
+			user = create(:user,signupcode: ENV["SIGNUPCODE"])
+			sign_in user
 		end
 
 		context 'with valid attributes' do
@@ -96,7 +98,7 @@ describe PostsController do
 
 			it 'redirects to posts#show' do
 				post :create, post: attributes_for(:post)
-				expect(response).to redirect_to post_path(assigns[:post])
+				expect(response).to redirect_to post_path(assigns[:post].id)
 			end
 
 		end
