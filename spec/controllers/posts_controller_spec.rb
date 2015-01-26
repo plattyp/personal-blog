@@ -126,6 +126,32 @@ describe PostsController do
 	end
 
 	describe 'PATCH #update' do
+		before(:each) do
+			@post = create(:post)
+		end
+
+		context 'valid attributes' do
+			it 'locates the requested @post' do
+				patch :update, id: @post, post: attributes_for(:post)
+				expect(assigns(:post)).to eq(@post)
+			end
+
+			it 'changes @post''s attributes' do
+				patch :update, id: @post,
+					post: attributes_for(:post, 
+						content: 'Test change in content',
+						project_id: 3)
+				@post.reload
+				expect(@post.content).to eq('Test change in content')
+				expect(@post.project_id).to eq(3)
+			end
+
+			it 'redirects to the edit page on success' do
+				patch :update, id: @post, post: attributes_for(:post)
+				expect(response).to redirect_to edit_post_path(@post.id)
+			end
+		end
+
 	end
 
 	describe 'DELETE #destroy' do
