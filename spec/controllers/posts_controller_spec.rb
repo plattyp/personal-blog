@@ -130,7 +130,7 @@ describe PostsController do
 			@post = create(:post)
 		end
 
-		context 'valid attributes' do
+		context 'with valid attributes' do
 			it 'locates the requested @post' do
 				patch :update, id: @post, post: attributes_for(:post)
 				expect(assigns(:post)).to eq(@post)
@@ -152,9 +152,87 @@ describe PostsController do
 			end
 		end
 
+		context 'with invalid attributes' do
+			it 'does not change the @post''s attributes' do
+				name = @post.name
+				content = @post.content
+
+				patch :update, id: @post,
+					post: attributes_for(:post,
+						content: nil,
+						name: nil)
+				@post.reload
+				expect(@post.content).to eq(content)
+				expect(@post.name).to eq(name)
+			end
+
+			it 'redirects back to edit page on failure' do
+				patch :update, id: @post,
+					post: attributes_for(:invalid_post)
+				expect(response).to redirect_to edit_post_path(@post.id)
+			end
+		end
+
 	end
 
 	describe 'DELETE #destroy' do
+		before(:each) do
+			@post = create(:post)
+		end
+
+		it 'deletes the post' do
+			expect {
+				delete :destroy, id: @post
+			}.to change(Post,:count).by(-1)
+		end
+
+		it 'redirects to manageposts path' do
+			delete :destroy, id: @post
+			expect(response).to redirect_to manageposts_path
+		end
+	end
+
+	describe 'GET #manage' do
+		before(:each) do
+			Post.delete_all
+		end
+
+		it 'populates an array of posts with a category_id by most recently published posts' do
+			post1 = create(:post, category_id: 1, visible: true)
+			post2 = create(:post, category_id: 2, visible: true)
+			post3 = create(:post, category_id: 1, visible: false)
+
+			get :manage, category_id: 1
+			expect(assigns(:posts)).to eq ([post3,post1])
+		end
+
+		it 'renders the :manage template' do
+			get :manage, category_id: 1
+			expect(response).to render_template :manage
+		end
+	end
+
+	describe 'PATCH #like' do
+		before(:each) do
+			request.env["HTTP_REFERER"] = "http://localhost.com:3000"
+			@post = create(:post)
+		end
+
+		it 'locates the requested @post' do
+			patch :like, id: @post, post: attributes_for(:post)
+			expect(assigns(:post)).to eq(@post)
+		end
+
+		it 'increments a posts likes by 1' do
+			likes = @post.likes
+			patch :like, id: @post
+			expect(@post.reload.likes).to eq(likes + 1)
+		end
+
+		it 'redirects back to the previous page' do
+			patch :like, id: @post
+			expect(response).to redirect_to "http://localhost.com:3000"
+		end
 	end
 
 end

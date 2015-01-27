@@ -49,7 +49,7 @@ class PostsController < ApplicationController
   end
 
   def manage
-    @posts = Post.manage_posts(params[:category])
+    @posts = Post.manage_posts(params[:category_id])
   end
 
   def like
