@@ -10,5 +10,13 @@ FactoryGirl.define do
 		f.snippet { Faker::Lorem.paragraph }
 		f.visible true
 		f.keywords { Faker::Lorem.sentence }
+
+		factory :visible_project do
+			visible true
+		end
+
+		factory :invisible_project do
+			visible false
+		end
 	end
 end
