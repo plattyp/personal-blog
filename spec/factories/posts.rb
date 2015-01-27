@@ -19,5 +19,9 @@ FactoryGirl.define do
 		factory :visible_post do
 			visible true
 		end
+
+		factory :invisible_post do
+			visible false
+		end
 	end
 end

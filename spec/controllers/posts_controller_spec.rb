@@ -50,18 +50,30 @@ describe PostsController do
 	end
 
 	describe 'GET #show' do
-		before(:each) do
-			expect(controller).to receive(:validate_post)
-			@post = create(:post)
-			get :show, id: @post
+		context 'valid post' do
+			before(:each) do
+				@post = create(:visible_post)
+				get :show, id: @post
+			end
+
+			it 'assigns the requested post to @post' do
+				expect(assigns(:post)).to eq @post
+			end
+
+			it 'renders the :show template' do
+				expect(response).to render_template :show
+			end
 		end
 
-		it 'assigns the requested post to @post' do
-			expect(assigns(:post)).to eq @post
-		end
+		context 'invalid post' do
+			before(:each) do
+				@post = create(:invisible_post)
+				get :show, id: @post
+			end
 
-		it 'renders the :show template' do
-			expect(response).to render_template :show
+			it 'redirects to root path' do
+				expect(response).to redirect_to root_path
+			end
 		end
 	end
 
@@ -234,5 +246,4 @@ describe PostsController do
 			expect(response).to redirect_to "http://localhost.com:3000"
 		end
 	end
-
 end
