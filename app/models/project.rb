@@ -5,7 +5,11 @@ class Project < ActiveRecord::Base
 
 	accepts_nested_attributes_for :images
 	
+	#Should be used for all public facing views
 	scope :recent_projects, -> {where("visible = TRUE").order('projects.created_at DESC')}
+
+	#Should be used only for Admin functions (shows hidden posts)
+	scope :manage_projects, -> {order('projects.created_at DESC')}
 
 	## For URL Friendly Names
 	def slug

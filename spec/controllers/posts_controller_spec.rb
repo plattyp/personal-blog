@@ -90,7 +90,6 @@ describe PostsController do
 		it 'renders the :new template' do
 			expect(response).to render_template :new
 		end
-
 	end
 
 	describe 'POST #create' do
@@ -116,6 +115,20 @@ describe PostsController do
 		end
 
 		context 'with invalid attributes' do
+
+			it 'is unable to save the new post in the database' do
+				expect {
+					post :create, post: attributes_for(:post,
+						category_id: nil)
+				}.to change(Post, :count).by(0)
+			end
+
+			it 'redirects to posts#new' do
+				post :create, post: attributes_for(:post,
+					category_id: nil)
+				expect(response).to redirect_to new_post_path
+			end
+
 		end
 
 	end

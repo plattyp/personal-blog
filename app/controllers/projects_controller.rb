@@ -34,23 +34,23 @@ class ProjectsController < ApplicationController
 		#Call method to update the image selected's mainpicindicator to true and the other images to false
 		Image.set_main_picture(@project.id,params[:project][:images]) unless params[:project][:images].blank?
 		if @project.update(project_params)
-			redirect_to edit_project_path(@project), :notice => "The project was updated successfully"
+			redirect_to edit_project_path(@project.id), :notice => "The project was updated successfully"
 		else
-			redirect_to edit_project_path(@project), :alert => "The project was unable to be updated"
+			redirect_to edit_project_path(@project.id), :alert => "The project was unable to be updated"
 		end
 	end
 
 	def destroy
 		@project = Project.find(params[:id])
 		if @project.destroy
-			redirect_to manageprojects_path(@project), :notice => "The project was deleted successfully"
+			redirect_to manageprojects_path, :notice => "The project was deleted successfully"
 		else
-			redirect_to manageprojects_path(@project), :alert => "The project was unable to be deleted"
+			redirect_to manageprojects_path, :alert => "The project was unable to be deleted"
 		end
 	end
 
 	def manage
-		@projects = Project.recent_projects
+		@projects = Project.manage_projects
 	end
 
 	private
