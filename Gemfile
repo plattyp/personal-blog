@@ -60,8 +60,9 @@ end
 group :test do 
 	gem 'faker' 
 	gem 'capybara' 
-	gem 'guard-rspec' 
+	gem 'database_cleaner'
 	gem 'launchy' 
+	gem 'selenium-webdriver'
 end
 
 ruby "2.0.0"

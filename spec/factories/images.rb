@@ -6,7 +6,7 @@ FactoryGirl.define do
 		f.imageable_type "project"
 		f.mainpicindicator false
 		f.caption { Faker::Lorem.sentence }
-		f.image File.new(Rails.root + 'spec/factories/images/image.png')
+		f.image File.new(Rails.root + 'spec/factories/images/image.jpg')
 
 		factory :main_image do
 			mainpicindicator true

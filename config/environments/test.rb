@@ -28,8 +28,6 @@ Rails.application.configure do
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
-  # ActionMailer::Base.deliveries array.
-  config.action_mailer.delivery_method = :test
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
@@ -49,18 +47,18 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   # Method for delivery
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :test
 
   # Settings for delivery
-  config.action_mailer.smtp_settings = {
-    address:              ENV["SMTP_ADDRESS"],
-    port:                 587,
-    domain:               ENV["SMTP_DOMAIN"],
-    user_name:            ENV["SMTP_USERNAME"],
-    password:             ENV["SMTP_PASSWORD"],
-    authentication:       'plain',
-    enable_starttls_auto: true  
-  }
+  # config.action_mailer.smtp_settings = {
+  #   address:              ENV["SMTP_ADDRESS"],
+  #   port:                 587,
+  #   domain:               ENV["SMTP_DOMAIN"],
+  #   user_name:            ENV["SMTP_USERNAME"],
+  #   password:             ENV["SMTP_PASSWORD"],
+  #   authentication:       'plain',
+  #   enable_starttls_auto: true  
+  # }
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

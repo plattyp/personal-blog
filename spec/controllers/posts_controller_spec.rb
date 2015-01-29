@@ -240,7 +240,8 @@ describe PostsController do
 	describe 'PATCH #like' do
 		before(:each) do
 			request.env["HTTP_REFERER"] = "http://localhost.com:3000"
-			@post = create(:post)
+			user = create(:user)
+			@post = create(:post, user_id: user.id)
 		end
 
 		it 'locates the requested @post' do
@@ -252,6 +253,11 @@ describe PostsController do
 			likes = @post.likes
 			patch :like, id: @post
 			expect(@post.reload.likes).to eq(likes + 1)
+		end
+
+		it 'sends email to user' do
+			patch :like, id: @post
+			expect{UserMessage.send_user_like(@post).deliver}.to change{ActionMailer::Base.deliveries.count}.by(1)
 		end
 
 		it 'redirects back to the previous page' do
