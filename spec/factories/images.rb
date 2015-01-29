@@ -7,5 +7,13 @@ FactoryGirl.define do
 		f.mainpicindicator false
 		f.caption { Faker::Lorem.sentence }
 		f.image File.new(Rails.root + 'spec/factories/images/image.png')
+
+		factory :main_image do
+			mainpicindicator true
+		end
+
+		factory :non_main_image do
+			mainpicindicator false
+		end
 	end
 end

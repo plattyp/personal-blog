@@ -103,6 +103,7 @@ describe ProjectsController do
 	describe 'GET #edit' do
 		before(:each) do
 			@project = create(:project)
+			@image = create(:main_image, imageable_id: @project.id, imageable_type: "Project")
 			get :edit, id: @project
 		end
 
@@ -111,8 +112,7 @@ describe ProjectsController do
 		end
 
 		it 'assigns the mainpictureid of the @project to @mainpicture' do
-			mainpicture = @project.images.mainpictureid
-			expect(assigns(:mainpicture)).to eq mainpicture
+			expect(assigns(:mainpicture)).to eq @image.id
 		end
 
 		it 'renders the :edit template' do

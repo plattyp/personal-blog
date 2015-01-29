@@ -37,13 +37,13 @@ describe Post do
 
 			it "has an image but it has a mainpicindicator set to false" do
 				# Create an image associated with Post that has mainpicindicator as false
-				create(:image, imageable_id: @post.id, imageable_type: "Post", mainpicindicator: false)
+				create(:non_main_image, imageable_id: @post.id, imageable_type: "Post")
 				expect(@post.has_profilepic?).to eq false
 			end
 
 			it "has an image that has mainpicindicator set to true" do
 				# Create an image associated with Post that has mainpicindicator as true
-				create(:image, imageable_id: @post.id, imageable_type: "Post", mainpicindicator: true)
+				create(:main_image, imageable_id: @post.id, imageable_type: "Post")
 				expect(@post.has_profilepic?).to eq true
 			end
 		end
@@ -66,7 +66,7 @@ describe Post do
 
 			it "has a project, but it is not visible" do
 				# Create project
-				project = create(:project, visible: false)
+				project = create(:invisible_project)
 
 				# Associate post with project
 				@post.project_id = project.id
@@ -77,7 +77,7 @@ describe Post do
 
 			it "has a project, and it is visible" do
 				# Create project
-				project = create(:project, visible: true)
+				project = create(:visible_project)
 
 				# Associate post with project
 				@post.project_id = project.id
@@ -101,9 +101,9 @@ describe Post do
 		# Clean up between tests
 		before(:each) do
 			Post.delete_all
-			@post1 = create(:post, category_id: 1, visible: true)
-			@post2 = create(:post, category_id: 1, visible: false)
-			@post3 = create(:post, category_id: 2, visible: true)
+			@post1 = create(:visible_post, category_id: 1)
+			@post2 = create(:invisible_post, category_id: 1)
+			@post3 = create(:visible_post, category_id: 2)
 		end
 
 		context ".recent_posts" do

@@ -5,7 +5,7 @@ describe Userdetail do
 
 	describe "ensures instance methods are working" do
 		before(:each) do
-			user = create(:user,signupcode: ENV["SIGNUPCODE"])
+			user = create(:user)
 			@userdetail = create(:userdetail, user_id: user.id)
 		end
 
@@ -41,7 +41,7 @@ describe Userdetail do
 		context "#has_github?" do
 
 			it "does not have a github_url" do
-				user = create(:user,signupcode: ENV["SIGNUPCODE"])
+				user = create(:user)
 				userdetail = create(:userdetail, user_id: user.id, github_url: nil)
 
 				expect(userdetail.has_github?).to eq false
@@ -56,7 +56,7 @@ describe Userdetail do
 		context "#has_linkedin?" do
 
 			it "does not have a linkedin_url" do
-				user = create(:user,signupcode: ENV["SIGNUPCODE"])
+				user = create(:user)
 				userdetail = create(:userdetail, user_id: user.id, linkedin_url: nil)
 
 				expect(userdetail.has_linkedin?).to eq false

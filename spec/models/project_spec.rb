@@ -99,7 +99,7 @@ describe Project do
 
 				# Create images associated with these projects
 				Project.all.each do |p|
-					create(:image, imageable_id: p.id, imageable_type: "Project", mainpicindicator: true)
+					create(:main_image, imageable_id: p.id, imageable_type: "Project")
 				end
 			end
 			

@@ -7,7 +7,7 @@ describe User do
 
 		context "valid signup" do
 			it "does have a signup code" do
-				user = build(:user,signupcode: ENV["SIGNUPCODE"])
+				user = build(:user)
 				expect(user).to be_valid
 			end
 		end
@@ -23,7 +23,7 @@ describe User do
 
 	describe "ensures instance methods are working" do
 		before(:each) do
-			@user = create(:user,signupcode: ENV["SIGNUPCODE"])
+			@user = create(:user)
 		end
 
 		context "#has_details?" do
@@ -43,8 +43,8 @@ describe User do
 	describe "ensures class methods are working" do
 		before(:each) do
 			User.destroy_all
-			@user1 = create(:user,signupcode: ENV["SIGNUPCODE"])
-			@user2 = create(:user,signupcode: ENV["SIGNUPCODE"])
+			@user1 = create(:user)
+			@user2 = create(:user)
 		end
 
 		context ".selectusers" do
