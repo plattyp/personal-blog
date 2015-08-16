@@ -4,7 +4,10 @@
             <h1><%= @project.name %>
                 <%= link_to '<i class="icon icon-pencil"></i>'.html_safe, edit_project_path(@project.id) if user_signed_in? %>
             </h1>
-            <h3><span><%= @project.snippet %></span></h3>
+            <h3><span><%= @project.snippet %></span></h3><br />
+            <% @project.languages.each do |l| %>
+                <span class="label label-inverse technology-label"><%= l.name %></span>
+            <% end %>
         </div>
     </div>
     <div class="card-body">
