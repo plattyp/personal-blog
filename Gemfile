@@ -65,4 +65,4 @@ group :test do
 	gem 'selenium-webdriver'
 end
 
-ruby "2.0.0"
+ruby "2.2.1"

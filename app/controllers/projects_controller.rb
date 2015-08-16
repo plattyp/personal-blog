@@ -2,7 +2,12 @@ class ProjectsController < ApplicationController
 	before_filter :validate_project, only: [:show]
 
 	def index
-		@projects = Project.grid
+		@projects  = Project.grid(params[:language_id])
+		@languages = Language.all_languages
+    respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 
 	def show
@@ -12,10 +17,23 @@ class ProjectsController < ApplicationController
 
 	def new
 		@project = Project.new
+		@languages = Language.all_languages
+		@project_language = @project.project_languages.build
 	end
 
 	def create
 		@project = Project.new(project_params)
+		@project.languages = []
+
+		# Find Languages
+		languages = params[:project_language][:language_id]
+		languages.each do |l|
+			language = Language.find_by_id(l)
+			if !language.nil?
+				@project.languages << language
+			end
+		end
+		
 		if @project.save
 			redirect_to new_project_path, :notice => "The project was created successfully"
 		else
@@ -25,12 +43,26 @@ class ProjectsController < ApplicationController
 
 	def edit
 		@project = Project.find(params[:id])
+		@languages = Language.all_languages
+		@project_language = @project.project_languages.build
 		#Main picture so that we can use it for the default value of a given radio button
 		@mainpicture = @project.images.mainpictureid
 	end
 
 	def update
 		@project = Project.find(params[:id])
+
+		@project.languages = []
+
+		# Find Languages
+		languages = params[:project_language][:language_id]
+		languages.each do |l|
+			language = Language.find_by_id(l)
+			if !language.nil?
+				@project.languages << language
+			end
+		end
+
 		#Call method to update the image selected's mainpicindicator to true and the other images to false
 		Image.set_main_picture(@project.id,params[:project][:images]) unless params[:project][:images].blank?
 		if @project.update(project_params)

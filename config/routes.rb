@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   authenticate :user do
     resources :categories
+    resources :languages
     resources :posts, only: [:new, :create, :edit, :update, :destroy]
     resources :projects, only: [:new, :create, :edit, :update, :destroy]
     resources :metadata

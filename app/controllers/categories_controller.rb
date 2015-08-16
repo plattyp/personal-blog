@@ -2,7 +2,9 @@ class CategoriesController < ApplicationController
 	
 	def index
 		@categories = Category.categories_with_counts
+		@languages = Language.all_languages
 		@category = Category.new
+		@language = Language.new
 	end
 
 	def new

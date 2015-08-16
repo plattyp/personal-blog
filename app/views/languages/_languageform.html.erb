@@ -1,0 +1,5 @@
+<%= form_for(@language) do |f| %>
+  <%= f.label "#{request.env['PATH_INFO'] == languages_path ? "Add New Language" : "Name"}" %>
+  <%= f.text_field :name %><br />
+  <%= f.submit :submit, :class => 'btn' %>
+<% end %>

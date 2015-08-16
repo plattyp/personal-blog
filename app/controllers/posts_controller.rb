@@ -4,7 +4,15 @@ class PostsController < ApplicationController
   before_filter :validate_post, only: [:show]
 
   def index
-    @posts = Post.recent_posts(params[:category_id])
+    if params[:id]
+      @posts = Post.recent_posts(params[:category_id]).where('id < ?', params[:id]).limit(5)
+    else
+      @posts = Post.recent_posts(params[:category_id]).limit(5)
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

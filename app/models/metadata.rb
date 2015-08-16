@@ -4,4 +4,5 @@ class Metadata < ActiveRecord::Base
 	accepts_nested_attributes_for :images
 
 	scope :baseinfo, -> {}
+
 end

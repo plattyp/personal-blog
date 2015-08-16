@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112004258) do
+ActiveRecord::Schema.define(version: 20150816044306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(version: 20150112004258) do
     t.datetime "image_updated_at"
     t.string   "image_content_type"
     t.string   "caption"
+  end
+
+  create_table "languages", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "metadata", force: true do |t|
@@ -63,6 +69,13 @@ ActiveRecord::Schema.define(version: 20150112004258) do
     t.integer  "likes",           default: 0
     t.text     "metadescription"
     t.text     "metakeywords"
+  end
+
+  create_table "project_languages", force: true do |t|
+    t.integer  "project_id"
+    t.integer  "language_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "projects", force: true do |t|

@@ -3,6 +3,9 @@ class Project < ActiveRecord::Base
 	has_many :posts
 	has_many :images, as: :imageable, :dependent => :destroy
 
+	has_many :project_languages
+	has_many :languages, :through => :project_languages
+
 	accepts_nested_attributes_for :images
 	
 	#Should be used for all public facing views
@@ -26,16 +29,21 @@ class Project < ActiveRecord::Base
 	end
 
 	#Used to generate an array of "3"s for projects
-	def self.grid
+	def self.grid(language_id = nil)
 		array = Array.new
 		resultarray = Array.new
 		counter = 0
-		projects = Project.recent_projects
+		if !language_id.nil? && Language.find_by_id(language_id)
+			projects = Project.recent_projects.joins(:project_languages).where('project_languages.language_id = ?', language_id)
+		else
+			projects = Project.recent_projects
+		end
 
 		projects.each do |p|
 			counter += 1
 			picture = p.images.mainpicture
-			array << [p.to_param,p.name,picture]
+			languages = p.languages.map{|l| l.name}.join(" ")
+			array << [p.to_param,p.name,picture,languages]
 			if counter == 3
 				resultarray << array
 				array = Array.new

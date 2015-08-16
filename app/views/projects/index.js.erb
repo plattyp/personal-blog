@@ -1,0 +1,3 @@
+$('.project-container').empty();
+
+$('.project-container').append("<%= escape_javascript(render(:partial => 'projectgrid', locals: {projects: @projects})) %>")

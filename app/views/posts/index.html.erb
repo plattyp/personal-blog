@@ -1,3 +1,11 @@
-<% @posts.each do |post| %>
-    <%= render partial: 'post', :locals => {:post => post} %>
-<% end %>
+<div class="post-container">
+  <% @posts.each do |post| %>
+      <%= render partial: 'post', :locals => {:post => post} %>
+  <% end %>
+</div>
+<div class="row-fluid">
+  <div class="span12 centered">
+    <%= image_tag "ajax-loader.gif", style: "display:none;", class: "loading-gif" %>
+    <%= link_to "Load More Posts", '#load_more', class: "load-more" %>
+  </div>
+</div>

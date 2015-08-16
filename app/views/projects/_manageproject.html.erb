@@ -5,6 +5,10 @@
 	<%= f.text_field :snippet %>
 	<%= f.label "Project Description" %>
 	<%= f.text_area :description, :class => 'largertextarea' %>
+	<%= f.label "Languages" %>
+  <%= fields_for(@project_language) do |c| %>
+    <%= collection_select(:project_language, :language_id, @languages, :id, :name, {:selected => @project.languages.map{|l| l.id}}, { :multiple => true} ) %>
+  <% end %>
 	<%= f.label "Keywords for Metadata" %>
 	<%= f.text_area :keywords, :class => 'largertextarea' %>
 	<%= f.label "Website URL" %>

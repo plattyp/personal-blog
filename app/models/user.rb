@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   attr_accessor :signupcode
 
   #Validation for signup so that a user must give this SIGNUPCODE for the environment to sign up
-  validates :signupcode, inclusion: {in: [ENV['SIGNUPCODE']], :message => "is not correct"}
+  validates :signupcode, inclusion: {in: [Rails.application.secrets.signupcode], :message => "is not correct"}
 
   #Returns an array of users that can be used for a form selector
   def self.selectusers

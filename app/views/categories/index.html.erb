@@ -1,5 +1,6 @@
 <%= render partial: 'shared/navtabs', :locals => {:tabcontent => 'Admin', :activetab => 'Manage Categories', :overridetab => nil} %>
 	<div class="admincontainer">
+		<h3>Categories</h3>
 		<table class="table">
 			<tr>
 				<td>Name</td>
@@ -16,5 +17,22 @@
 			<% end %>
 		</table><br />
 		<%= render partial: 'categoryform' %>
+		<h3>Languages</h3>
+		<table class="table">
+			<tr>
+				<td>Name</td>
+				<td>No of Projects</td>
+				<td>Actions</td>
+			</tr>
+			<% @languages.each do |l| %>
+				<tr>
+					<td><%= l.name %></td>
+					<td>0</td>
+					<td><%= link_to "Edit", edit_language_path(l.id) %> | 
+					<%= link_to "Delete", language_path(l.id), :method => :destroy %></td>
+				</tr>
+			<% end %>
+		</table><br />
+		<%= render partial: 'languages/languageform' %>
 	</div>
 <%= render partial: 'shared/tabfooter' %>
