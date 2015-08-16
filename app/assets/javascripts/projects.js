@@ -1,6 +1,8 @@
-$(document).on("page:load", function () {
+$(document).on("ready page:load", function () {
 
-  var $btns = $('a.btn-filter-language-toolbar').click(function() {
+  var $btns = $('a.btn-filter-language-toolbar').on('click',function(e) {
+
+    e.preventDefault();
 
     $btns.removeClass('active');
     $(this).addClass('active');

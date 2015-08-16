@@ -1,10 +1,9 @@
-$(document).on("page:load", function () {
+$(document).on("ready page:load", function () {
 
-  $('a.load-more').click(function (e) {
-
+  $('#load-more').on('click',function (e) {
       e.preventDefault();
 
-      $('.load-more').hide();
+      $('#load-more').hide();
 
       $('.loading-gif').show();
 
@@ -20,7 +19,7 @@ $(document).on("page:load", function () {
 
           success: function () {
               $('.loading-gif').hide();
-              $('.load-more').show();
+              $('#load-more').show();
           }
       });
 
