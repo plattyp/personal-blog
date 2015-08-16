@@ -32,7 +32,8 @@ class ApplicationController < ActionController::Base
       when "users"
         case params[:action]
         when "show"
-          user = User.find(params[:id])
+          @metadata = Metadata.baseinfo.first
+          user = User.find(@metadata.aboutmeuser)
           @metadata.metatitle = user.name + " | About Me"
           #Get the description
           description = user.userdetail.description

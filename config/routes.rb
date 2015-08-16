@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   patch 'likepost' => 'posts#like'
   get 'users/:id' => 'users#show'
+  get 'me'        => 'users#show'
   get "users/messages/:id" => 'users#message', :as => :message_user
   post "users/sendmessage" => 'users#sendmessage', :as => :send_message_user
   resources :projects, only: [:index,:show]

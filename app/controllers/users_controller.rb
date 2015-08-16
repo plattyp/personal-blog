@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	def show
-		@user = User.find(params[:id])
+		@metadata = Metadata.baseinfo.first
+		@user = User.find(@metadata.aboutmeuser)
 	end
 
 	def message
