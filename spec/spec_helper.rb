@@ -1,11 +1,10 @@
-require File.expand_path("../../config/environment", __FILE__)
-ENV["RAILS_ENV"] = 'test'
+require File.expand_path('../../config/environment', __FILE__)
+ENV['RAILS_ENV'] ||= 'test'
 
 RSpec.configure do |config|
-
   # Include Factory Girl syntax to simplify calls to factories
-  #config.include FactoryGirl::Syntax::Methods
-  
+  # config.include FactoryGirl::Syntax::Methods
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -28,5 +27,4 @@ RSpec.configure do |config|
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
   end
-
 end

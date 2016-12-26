@@ -19,10 +19,10 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+gem 'spring', group: :development
 
 # Use Postgre for the DB
 gem 'pg'
@@ -32,7 +32,7 @@ gem 'devise'
 
 # The editor for the HTML WYSIWYG content, attachments, storage on S3
 gem 'redactor-rails'
-gem "paperclip", "~> 4.2"
+gem 'paperclip', '~> 4.2'
 gem 'aws-sdk', '~> 1.5.7'
 
 # Galleries
@@ -46,23 +46,23 @@ gem 'nokogiri'
 
 # For Heroku Deployment
 gem 'rails_12factor', group: :production
-gem "figaro"
+gem 'figaro'
 
 # For app monitoring
 gem 'newrelic_rpm'
 
 # For testing
-group :development, :test do 
-	gem 'rspec-rails' 
-	gem 'factory_girl_rails' 
-end 
-
-group :test do 
-	gem 'faker' 
-	gem 'capybara' 
-	gem 'database_cleaner'
-	gem 'launchy' 
-	gem 'selenium-webdriver'
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
-ruby "2.2.1"
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+end
+
+ruby '2.3.0'

@@ -11,7 +11,7 @@
 				<tr>
 					<td><%= c.name %></td>
 					<td><%= link_to "#{c.postcount}", posts_path(:category_id => c.id) %></td>
-					<td><%= link_to "Edit", edit_category_path(c.id) %> | 
+					<td><%= link_to "Edit", edit_category_path(c.id) %> |
 					<%= link_to "Delete", category_path(c.id), :method => :destroy %></td>
 				</tr>
 			<% end %>
@@ -28,7 +28,7 @@
 				<tr>
 					<td><%= l.name %></td>
 					<td>0</td>
-					<td><%= link_to "Edit", edit_language_path(l.id) %> | 
+					<td><%= link_to "Edit", edit_language_path(l.id) %> |
 					<%= link_to "Delete", language_path(l.id), :method => :destroy %></td>
 				</tr>
 			<% end %>
