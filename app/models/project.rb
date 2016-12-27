@@ -14,6 +14,11 @@ class Project < ActiveRecord::Base
   # Should be used only for Admin functions (shows hidden posts)
   scope :manage_projects, -> { order('projects.created_at DESC') }
 
+  # Images by ordinal
+  def images_by_ordinal
+    images.order('ordinal DESC')
+  end
+
   ## For URL Friendly Names
   def slug
     name.downcase.tr(' ', '-').delete('.')

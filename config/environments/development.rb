@@ -33,16 +33,17 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
 
   # For the configuration of devise
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # For attachments with PaperClip
+  Paperclip.options[:command_path] = '/usr/local/bin/'
   config.paperclip_defaults = {
-    :storage => :s3,
-    :path => "/:class/:id/:style/:clean_filename",
-    :s3_credentials => {
-      :bucket => ENV['S3_BUCKET'],
-      :access_key_id => ENV['S3_ACCESS_KEY'],
-      :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']
+    storage: :s3,
+    path: '/:class/:id/:style/:clean_filename',
+    s3_credentials: {
+      bucket: Rails.application.secrets.s3_bucket,
+      access_key_id: ENV['S3_ACCESS_KEY'],
+      secret_access_key: ENV['S3_SECRET_ACCESS_KEY']
     }
   }
 
@@ -51,13 +52,13 @@ Rails.application.configure do
 
   # Settings for delivery
   config.action_mailer.smtp_settings = {
-    address:              ENV["SMTP_ADDRESS"],
+    address:              ENV['SMTP_ADDRESS'],
     port:                 587,
-    domain:               ENV["SMTP_DOMAIN"],
-    user_name:            ENV["SMTP_USERNAME"],
-    password:             ENV["SMTP_PASSWORD"],
+    domain:               ENV['SMTP_DOMAIN'],
+    user_name:            ENV['SMTP_USERNAME'],
+    password:             ENV['SMTP_PASSWORD'],
     authentication:       'plain',
-    enable_starttls_auto: true  
+    enable_starttls_auto: true
   }
 
   # Raises error for missing translations

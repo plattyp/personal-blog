@@ -59,8 +59,8 @@ class ProjectsController < ApplicationController
       @project.languages << language unless language.nil?
     end
 
-    # Call method to update the image selected's mainpicindicator to true and the other images to false
-    Image.set_main_picture(@project.id, params[:project][:images]) unless params[:project][:images].blank?
+    # # Call method to update the image selected's mainpicindicator to true and the other images to false
+    # Image.set_main_picture(@project.id, params[:project][:images]) unless params[:project][:images].blank?
     if @project.update(project_params)
       redirect_to edit_project_path(@project.id), notice: 'The project was updated successfully'
     else

@@ -1,0 +1,27 @@
+<h3>Images</h3>
+<table class="table">
+  <tr>
+    <td>Image</td>
+    <td>Main</td>
+    <td>Actions</td>
+  </tr>
+  <% object.images_by_ordinal.each do |image| %>
+    <tr>
+      <td><%= "#{image_tag(image.image.url(:thumb))}".html_safe %></td>
+      <td><%= image.mainpicindicator ? "Yes" : "No" %></td>
+      <td>
+        <%= link_to "", mark_image_as_main_path(:id => image.id), method: :patch, :class => "icon-star" unless image.mainpicindicator %>
+        <%= link_to "", move_image_up_path(:id => image.id), method: :patch, :class => "icon-arrow-up" if !image.last_of_project? %>
+        <%= link_to "", move_image_down_path(:id => image.id), method: :patch, :class => "icon-arrow-down" if !image.first_of_project? %>
+        <%= link_to "", image_path(:id => image.id, :class_id => object.id), method: :delete, data: { confirm: 'Are you sure that you want to delete this image?'}, :class => "icon-trash" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<h3>Upload More</h3>
+<div class="tab-pane" id="upload">
+  <%= f.fields_for :images, object.images.build do |i| %>
+      <%= i.label "Image" %>
+      <%= i.file_field :image %>
+  <% end %>
+</div>

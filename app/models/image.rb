@@ -45,4 +45,32 @@ class Image < ActiveRecord::Base
     image = Image.find(image_id)
     image.update(mainpicindicator: true)
   end
+
+  def self.maximum_ordinal(project_id)
+    Image.where(imageable_id: project_id, imageable_type: 'Project').maximum(:ordinal)
+  end
+
+  def decrement_ordinal
+    if ordinal > 0
+      self.ordinal -= 1
+      save
+    end
+  end
+
+  def increment_ordinal
+    self.ordinal += 1
+    save
+  end
+
+  # Checks to see if the image is first of the set
+  def first_of_project?
+    ordinal === 0
+  end
+
+  # Checks to see if the image is the last of the set
+  def last_of_project?
+    maximum = Image.maximum_ordinal(imageable_id)
+    return false if maximum == 0
+    maximum == ordinal
+  end
 end

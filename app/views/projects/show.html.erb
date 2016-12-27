@@ -10,7 +10,7 @@
 					</div>
 				</div>
 				<div class="tab-pane" id="projectimages">
-					<%= render_gallery_for @project.images, item_class: 'span2' if @project.has_images? %>
+					<%= render_gallery_for @project.images_by_ordinal, item_class: 'span2' if @project.has_images? %>
 				</div>
 		<%= render partial: 'shared/tabfooter' %>
 	</div>

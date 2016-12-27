@@ -19,6 +19,6 @@
 	<%= f.url_field :github_url %>
 	<%= f.label "Is Visible?" %>
 	<%= f.check_box :visible %><br /><br />
-	<%= render partial: "shared/imagecontrols", :locals => {:object => @project, :f => f, :passingview => "project", :mainpicture => @mainpicture} %><br />
+	<%= render partial: "manageimages", locals: {object: @project, f: f} %><br />
 	<%= f.submit :submit, :class => 'btn' %>
 <% end %>
