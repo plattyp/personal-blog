@@ -30,6 +30,10 @@ gem 'pg'
 # Use Devise for Authentication
 gem 'devise'
 
+# For Application Server
+gem 'foreman'
+gem 'passenger'
+
 # The editor for the HTML WYSIWYG content, attachments, storage on S3
 gem 'redactor-rails'
 gem 'paperclip', '~> 4.2'

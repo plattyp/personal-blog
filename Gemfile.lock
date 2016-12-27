@@ -76,6 +76,8 @@ GEM
     ffi (1.9.6)
     figaro (1.0.0)
       thor (~> 0.14)
+    foreman (0.78.0)
+      thor (~> 0.19.1)
     hermitage (0.0.6)
       coffee-rails
       jquery-rails
@@ -111,6 +113,9 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    passenger (5.0.26)
+      rack
+      rake (>= 0.8.1)
     pg (0.17.1)
     polyglot (0.3.5)
     rack (1.5.2)
@@ -221,6 +226,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   figaro
+  foreman
   hermitage
   jbuilder (~> 2.0)
   jquery-rails
@@ -228,6 +234,7 @@ DEPENDENCIES
   newrelic_rpm
   nokogiri
   paperclip (~> 4.2)
+  passenger
   pg
   rails (= 4.1.4)
   rails_12factor
