@@ -42,8 +42,8 @@ RSpec.configure do |config|
 
   config.before(:each) do
     allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true)
-    allow_any_instance_of(Paperclip::Attachment).to receive(:clear).and_return(true)
     allow_any_instance_of(Paperclip::Attachment).to receive(:destroy).and_return(true)
+    allow_any_instance_of(Paperclip::Storage::S3).to receive(:exists?).and_return(true)
   end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
