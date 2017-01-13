@@ -1,5 +1,6 @@
+ENV['RAILS_ENV'] = 'test'
+ENV['S3_BUCKET'] = 'test'
 require File.expand_path('../../config/environment', __FILE__)
-ENV['RAILS_ENV'] ||= 'test'
 
 RSpec.configure do |config|
   # Include Factory Girl syntax to simplify calls to factories

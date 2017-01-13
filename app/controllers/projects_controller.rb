@@ -26,10 +26,12 @@ class ProjectsController < ApplicationController
     @project.languages = []
 
     # Find Languages
-    languages = params[:project_language][:language_id]
-    languages.each do |l|
-      language = Language.find_by_id(l)
-      @project.languages << language unless language.nil?
+    unless params[:project_language].nil?
+      languages = params[:project_language].fetch(:language_id, [])
+      languages.each do |l|
+        language = Language.find_by_id(l)
+        @project.languages << language unless language.nil?
+      end
     end
 
     if @project.save
@@ -53,10 +55,12 @@ class ProjectsController < ApplicationController
     @project.languages = []
 
     # Find Languages
-    languages = params[:project_language][:language_id]
-    languages.each do |l|
-      language = Language.find_by_id(l)
-      @project.languages << language unless language.nil?
+    unless params[:project_language].nil?
+      languages = params[:project_language].fetch(:language_id, [])
+      languages.each do |l|
+        language = Language.find_by_id(l)
+        @project.languages << language unless language.nil?
+      end
     end
 
     # # Call method to update the image selected's mainpicindicator to true and the other images to false

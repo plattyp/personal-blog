@@ -2,6 +2,10 @@ require 'spec_helper'
 require 'rails_helper'
 
 describe Project do
+  before(:all) do
+    ENV['S3_BUCKET'] = 'test'
+  end
+
   describe 'validate the model' do
     context 'valid records' do
       it 'has a valid factory' do
@@ -92,8 +96,8 @@ describe Project do
 
       it 'returns a grid by 3s of projects with an image' do
         expect(Project.grid).to eq [
-          [[@project5.to_param, @project5.name, @project5.images.mainpicture], [@project4.to_param, @project4.name, @project4.images.mainpicture], [@project3.to_param, @project3.name, @project3.images.mainpicture]],
-          [[@project2.to_param, @project2.name, @project2.images.mainpicture], [@project1.to_param, @project1.name, @project1.images.mainpicture]]
+          [[@project5.to_param, @project5.name, @project5.images.mainpicture, ''], [@project4.to_param, @project4.name, @project4.images.mainpicture, ''], [@project3.to_param, @project3.name, @project3.images.mainpicture, '']],
+          [[@project2.to_param, @project2.name, @project2.images.mainpicture, ''], [@project1.to_param, @project1.name, @project1.images.mainpicture, '']]
         ]
       end
     end

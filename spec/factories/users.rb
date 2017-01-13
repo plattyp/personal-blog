@@ -6,6 +6,6 @@ FactoryGirl.define do
     f.email { Faker::Internet.email }
     f.password 'password'
     f.password_confirmation 'password'
-    f.signupcode ENV['SIGNUPCODE']
+    f.signupcode Rails.application.secrets.signupcode
   end
 end

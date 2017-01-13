@@ -9,6 +9,7 @@ describe ProjectsController do
   describe 'GET #index' do
     before(:each) do
       Project.delete_all
+      Image.delete_all
     end
 
     it 'populates an array of projects by most recently visible published' do
@@ -19,8 +20,8 @@ describe ProjectsController do
       project3 = create(:invisible_project)
       create(:image, imageable_id: project3.id, imageable_type: 'Project', mainpicindicator: true)
 
-      array1 = [project2.to_param, project2.name, project2.images.mainpicture]
-      array2 = [project1.to_param, project1.name, project1.images.mainpicture]
+      array1 = [project2.to_param, project2.name, project2.images.mainpicture, '']
+      array2 = [project1.to_param, project1.name, project1.images.mainpicture, '']
 
       get :index
       expect(assigns(:projects)).to eq([[array1, array2]])
@@ -82,15 +83,19 @@ describe ProjectsController do
   end
 
   describe 'POST #create' do
+    before(:each) do
+      @language = create(:language)
+    end
+
     context 'with valid attributes' do
       it 'saves the new project in the database' do
         expect do
-          post :create, project: attributes_for(:project)
+          post :create, project: { name: 'New Project' }, project_language: { language_id: [@language.id] }
         end.to change(Project, :count).by(1)
       end
 
       it 'redirects to projects#show' do
-        post :create, project: attributes_for(:project)
+        post :create, project: { name: 'New Project' }, project_language: { language_id: [@language.id] }
         expect(response).to redirect_to new_project_path
       end
     end
@@ -118,12 +123,13 @@ describe ProjectsController do
 
   describe 'PATCH #update' do
     before(:each) do
+      @language = create(:language)
       @project = create(:project)
     end
 
     context 'with valid attributes' do
       it 'locates the requested @project' do
-        patch :update, id: @project, project: attributes_for(:project)
+        patch :update, id: @project, project: attributes_for(:project, project_language: [@language.id])
         expect(assigns(:project)).to eq(@project)
       end
 

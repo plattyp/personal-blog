@@ -90,7 +90,7 @@ describe PostsController do
   describe 'POST #create' do
     before(:each) do
       # Uses the controller_helper sign_un method to authenticate the route
-      user = create(:user, signupcode: ENV['SIGNUPCODE'])
+      user = create(:user, signupcode: Rails.application.secrets.signupcode)
       sign_in user
     end
 
@@ -244,8 +244,9 @@ describe PostsController do
     end
 
     it 'sends email to user' do
-      patch :like, id: @post
-      expect { UserMessage.send_user_like(@post).deliver }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      puts ActionMailer::Base.delivery_method
+      puts ENV['RAILS_ENV']
+      expect { patch :like, id: @post }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
 
     it 'redirects back to the previous page' do

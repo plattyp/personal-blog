@@ -13,6 +13,7 @@ describe User do
     context 'invalid signup' do
       it 'does not have signup code' do
         user = build(:user, signupcode: nil)
+        puts Rails.application.secrets.signupcode
         expect(user).not_to be_valid
       end
     end

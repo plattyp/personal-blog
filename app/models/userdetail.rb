@@ -7,7 +7,7 @@ class Userdetail < ActiveRecord::Base
 
   # Returns back a profile picture id (First image)
   def profile_pic
-    profile_pic = Userdetail.joins(:images).where('userdetails.id = ?', id).pluck('images.id').first
+    Userdetail.joins(:images).where('userdetails.id = ?', id).pluck('images.id').first
   end
 
   # Returns a true or false if the userdetail has a a profile pic
